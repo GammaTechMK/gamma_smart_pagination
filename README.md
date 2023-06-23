@@ -123,6 +123,14 @@ class _ExampleAppState extends State<ExampleApp> {
       ],
     );
   }
+
+  @override
+  void dispose() {
+    // Don't forget to dispose the controllers
+    gammaSmartController.dispose();
+    scrollController.dispose();
+    super.dispose();
+  }
 }
 ```
 
