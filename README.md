@@ -34,7 +34,7 @@ import 'package:gamma_smart_pagination/gamma_smart_pagination.dart';
 
 ## How to use
 
-Simply create a `GammaSmartPagination` widget, and pass it the required `GammaSmartController` along with any other available params.
+Simply create a `GammaSmartPagination` widget, and pass it the required `GammaSmartController` and `ScrollController` along with any other available params.
 > Tip: Keep in mind that `GammaSmartPagination` is actually a `SingleChildScrollView`, so be mindful to not have unbounded height in the parent widget
 
 ```dart
@@ -98,8 +98,8 @@ class _ExampleAppState extends State<ExampleApp> {
   }
 
   Widget get _getLoadingIndicator => const Center(
-    child: CircularProgressIndicator(),
-  );
+        child: CircularProgressIndicator(),
+      );
 
   Future<void> fetchItems() async {
     setState(() {
@@ -107,7 +107,7 @@ class _ExampleAppState extends State<ExampleApp> {
     });
     await Future.delayed(const Duration(seconds: 1));
     final fakeItems = List.generate(10, (index) => 'Item ${index + 1}');
-
+    gammaSmartController.setStatus(GammaSmartControllerStatus.idle);
     setState(() {
       itemsList = fakeItems;
       isLoading = false;
@@ -117,7 +117,8 @@ class _ExampleAppState extends State<ExampleApp> {
   Future<void> loadMore() async {
     await Future.delayed(const Duration(seconds: 1));
     final fakeItems = List.generate(10, (index) => 'Item ${itemsList.length + index + 1}');
-
+    // Update the controller status to completed or failed based on the result
+    gammaSmartController.setStatus(GammaSmartControllerStatus.loadingCompleted);
     setState(() {
       itemsList = [...itemsList, ...fakeItems];
     });
@@ -126,7 +127,8 @@ class _ExampleAppState extends State<ExampleApp> {
   Future<void> refreshItems() async {
     await Future.delayed(const Duration(seconds: 1));
     final fakeItems = List.generate(10, (index) => 'Item ${index + 1}');
-
+    // Update the controller status to completed or failed based on the result
+    gammaSmartController.setStatus(GammaSmartControllerStatus.refreshingCompleted);
     setState(() {
       itemsList = fakeItems;
     });
@@ -151,11 +153,17 @@ For a full example check out the [Example app](https://github.com/GammaTechMK/ga
 
 GammaSmartPagination(
   key: const Key('firstScreenInfinitePagination'),
+  // Required (for status updates)
   gammaSmartController: GammaSmartController(),
+  // Required (for triggering load more when scrolled to bottom)
   scrollController: ScrollController,
+  // Future<void> Callback when user scrolls to the bottom of the list
   onLoadMore: () => loadMore(),
+  // Future<void> Callback when pull to refresh is triggered
   onRefresh: () => refreshItems(),
+  // Required
   itemCount: itemsList.length,
+  // Required
   itemBuilder: (context, index) => ListTile(
     title: Text(itemsList[index]),
   ),
@@ -164,6 +172,8 @@ GammaSmartPagination(
   loadingFailedWidget: Text('Failed to load more items...'),
   refreshFailedWidget: Text('Failed to refresh data...'),
   loadingIndicator: CircularProgressIndicator.adaptive(),
+  // Divider for the list items
+  // if omitted the list is rendered without separator
   separator: const Divider(),
 )
 ```
