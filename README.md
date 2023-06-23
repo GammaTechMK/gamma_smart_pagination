@@ -94,30 +94,36 @@ class _ExampleAppState extends State<ExampleApp> {
           title: const Text('Example screen'),
         ),
         body: SafeArea(
-          child: Column(
-            children: [
-              Expanded(
-                child: isLoading
-                    ? const Center(
-                        child: CircularProgressIndicator(),
-                      )
-                    : GammaSmartPagination(
-                        gammaSmartController: gammaSmartController,
-                        scrollController: scrollController,
-                        onLoadMore: () => loadMore(),
-                        onRefresh: () => refreshItems(),
-                        itemCount: itemsList.length,
-                        itemBuilder: (context, index) => ListTile(
-                          title: Text(itemsList[index]),
-                        ),
-                      ),
-              ),
-            ],
-          ),
+          child: isLoading ? _getLoadingIndicator : _buildBody(),
         ),
       ),
     );
   }
+
+  Widget get _getLoadingIndicator => const Center(
+        child: CircularProgressIndicator(),
+      );
+
+  Widget _buildBody() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Expanded(
+          child: GammaSmartPagination(
+            gammaSmartController: gammaSmartController,
+            scrollController: scrollController,
+            onLoadMore: () => loadMore(),
+            onRefresh: () => refreshItems(),
+            itemCount: itemsList.length,
+            itemBuilder: (context, index) => ListTile(
+              title: Text(itemsList[index]),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
 ```
 
 ## Params
