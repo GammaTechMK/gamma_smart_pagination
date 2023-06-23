@@ -1,8 +1,16 @@
-# GammaSmartPagination
+## GammaSmartPagination
 Flutter package for implementing infinite scroll pagination, with support for pull to refresh.
 Contains:
 * GammaSmartPagination (widget)
 * GammaSmartController (controller class for the widget)
+
+### Table of Contents 
+1. [Features] (#features)
+2. [Supported platforms] (#supported-platforms)
+3. [Installation] (#installation)
+4. [How to use] (#how-to-use)
+5. [Example app] (#example-app)
+6. [Params] (#params)
 
 ## Features
 
@@ -29,9 +37,6 @@ import 'package:gamma_smart_pagination/gamma_smart_pagination.dart';
 ## How to use
 
 Simply create a `GammaSmartPagination` widget, and pass the required params.
-
-For a full example check out the [Example app](https://github.com/GammaTechMK/gamma_smart_pagination/tree/main/example "Example app")
-
 > Tip: Keep in mind that `GammaSmartPagination` is actually a `SingleChildScrollView`, so be mindful to not have unbounded height in the parent widget
 
 ```dart
@@ -138,6 +143,9 @@ class _ExampleAppState extends State<ExampleApp> {
   }
 }
 ```
+
+## Example app
+For a full example check out the [Example app](https://github.com/GammaTechMK/gamma_smart_pagination/tree/main/example "Example app")
 
 ## Params
 
