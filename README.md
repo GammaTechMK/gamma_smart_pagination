@@ -107,6 +107,8 @@ class _ExampleAppState extends State<ExampleApp> {
     });
     await Future.delayed(const Duration(seconds: 1));
     final fakeItems = List.generate(10, (index) => 'Item ${index + 1}');
+    // Update the controller status to completed or failed based on the result
+    // If it is the initial request for data, you can use the idle or failed status
     gammaSmartController.setStatus(GammaSmartControllerStatus.idle);
     setState(() {
       itemsList = fakeItems;
