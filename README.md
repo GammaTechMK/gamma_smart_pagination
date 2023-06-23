@@ -51,6 +51,49 @@ class _ExampleAppState extends State<ExampleApp> {
     super.initState();
   }
 
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Gamma Smart Pagination Example',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Example screen'),
+        ),
+        body: SafeArea(
+          child: isLoading ? _getLoadingIndicator : _buildBody(),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildBody() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Expanded(
+          // This is the important part:
+          child: GammaSmartPagination(
+            gammaSmartController: gammaSmartController,
+            scrollController: scrollController,
+            onLoadMore: () => loadMore(),
+            onRefresh: () => refreshItems(),
+            itemCount: itemsList.length,
+            itemBuilder: (context, index) => ListTile(
+              title: Text(itemsList[index]),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget get _getLoadingIndicator => const Center(
+    child: CircularProgressIndicator(),
+  );
+
   Future<void> fetchItems() async {
     setState(() {
       isLoading = true;
@@ -80,48 +123,6 @@ class _ExampleAppState extends State<ExampleApp> {
     setState(() {
       itemsList = fakeItems;
     });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Gamma Smart Pagination Example',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Example screen'),
-        ),
-        body: SafeArea(
-          child: isLoading ? _getLoadingIndicator : _buildBody(),
-        ),
-      ),
-    );
-  }
-
-  Widget get _getLoadingIndicator => const Center(
-        child: CircularProgressIndicator(),
-      );
-
-  Widget _buildBody() {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Expanded(
-          child: GammaSmartPagination(
-            gammaSmartController: gammaSmartController,
-            scrollController: scrollController,
-            onLoadMore: () => loadMore(),
-            onRefresh: () => refreshItems(),
-            itemCount: itemsList.length,
-            itemBuilder: (context, index) => ListTile(
-              title: Text(itemsList[index]),
-            ),
-          ),
-        ),
-      ],
-    );
   }
 
   @override
