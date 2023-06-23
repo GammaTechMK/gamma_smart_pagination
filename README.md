@@ -28,7 +28,8 @@ import 'package:gamma_smart_pagination/gamma_smart_pagination.dart';
 
 ## How to use
 
-Simply create a `GammaSmartPagination` widget, and pass the required params:
+Simply create a `GammaSmartPagination` widget, and pass the required params.
+(Keep in mind that `GammaSmartPagination` is actually a `SingleChildScrollView`, so be mindful to not have unbounded height in the parent widget)
 
 ```dart
 class ExampleApp extends StatefulWidget {
