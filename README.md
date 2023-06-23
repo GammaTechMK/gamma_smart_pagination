@@ -5,12 +5,12 @@ Contains:
 * GammaSmartController (controller class for the widget)
 
 ### Table of Contents 
-1. [Features] (#features)
-2. [Supported platforms] (#supported-platforms)
-3. [Installation] (#installation)
-4. [How to use] (#how-to-use)
-5. [Example app] (#example-app)
-6. [Params] (#params)
+1. [`Features`] (#features)
+2. [`Supported platforms`] (#supported-platforms)
+3. [`Installation`] (#installation)
+4. [`How to use`] (#how-to-use)
+5. [`Example app`] (#example-app)
+6. [`Params`] (#params)
 
 ## Features
 
