@@ -66,7 +66,7 @@ class _FirstScreenState extends ConsumerState<FirstScreen> {
       children: <Widget>[
         Expanded(
           child: GammaSmartPagination(
-            customController: state.hrAppRefreshController,
+            gammaSmartController: state.hrAppRefreshController,
             scrollController: state.scrollController,
             onRefresh: () => viewmodel.refreshItems(),
             onLoadMore: () => viewmodel.loadMoreItems(),

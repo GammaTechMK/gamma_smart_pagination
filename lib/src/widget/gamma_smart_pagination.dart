@@ -4,7 +4,7 @@ import '../controller/gamma_smart_controller.dart';
 import '../controller/smart_controller_status.dart';
 
 class GammaSmartPagination extends StatefulWidget {
-  final GammaSmartController customController;
+  final GammaSmartController gammaSmartController;
   final ScrollController scrollController;
   final Widget? Function(BuildContext context, int index) itemBuilder;
   final Future<void> Function()? onLoadMore;
@@ -18,7 +18,7 @@ class GammaSmartPagination extends StatefulWidget {
   final Widget? separator;
   const GammaSmartPagination({
     super.key,
-    required this.customController,
+    required this.gammaSmartController,
     required this.scrollController,
     required this.itemBuilder,
     required this.itemCount,
@@ -37,7 +37,7 @@ class GammaSmartPagination extends StatefulWidget {
 }
 
 class _GammaSmartPaginationState extends State<GammaSmartPagination> {
-  GammaSmartController get _customController => widget.customController;
+  GammaSmartController get _customController => widget.gammaSmartController;
   ScrollController get _scrollController => widget.scrollController;
 
   static const double _sensitivityFactor = 0.0;
