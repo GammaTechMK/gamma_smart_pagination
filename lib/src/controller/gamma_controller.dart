@@ -7,11 +7,39 @@ import 'gamma_controller_status.dart';
 /// when the state changes
 class GammaController extends ChangeNotifier {
   late GammaControllerStatus _status;
+  final List<VoidCallback> _listeners = <VoidCallback>[];
+  bool _isDisposed = false;
 
   /// [GammaController] constructor.
   GammaController() {
     _status = const GammaControllerStatus.idle();
   }
+
+  /// [attachListener] method to add a listener to the controller.
+  void attachListener(VoidCallback listener) {
+    _listeners.add(listener);
+  }
+
+  /// [detachListener] method to remove a listener from the controller.
+  /// @Params: [listener] is the listener to be removed.
+  /// If no listener is passed, all listeners will be removed.
+  void detachListener({VoidCallback? listener}) {
+    if (listener != null) {
+      _listeners.remove(listener);
+    } else {
+      _listeners.clear();
+    }
+  }
+
+  /// [listeners] getter for the controller listeners.
+  List<VoidCallback> get listeners => _listeners;
+
+  /// Whether any [Listener] objects have attached themselves to the
+  /// [GammaController] using the [attachListener] method.
+  ///
+  /// If this is false, then members that interact with the [GammaControllerStatus],
+  /// must not be called.
+  bool get hasClients => _listeners.isNotEmpty;
 
   /// [GammaControllerStatus] getter for the controller status.
   GammaControllerStatus get status => _status;
@@ -77,5 +105,19 @@ class GammaController extends ChangeNotifier {
   void setRefreshingCompleted() {
     _status = const GammaControllerStatus.refreshingCompleted();
     notifyListeners();
+  }
+
+  @override
+  void notifyListeners() {
+    if (!_isDisposed) {
+      super.notifyListeners();
+    }
+  }
+
+  @override
+  void dispose() {
+    _isDisposed = true;
+    _listeners.clear();
+    super.dispose();
   }
 }
