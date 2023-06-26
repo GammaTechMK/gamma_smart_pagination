@@ -80,7 +80,6 @@ class _FirstScreenState extends ConsumerState<FirstScreen> {
                   final item = state.itemsList[index];
                   return ListTile(
                     title: Text(item),
-                    subtitle: Text('Example item description #${index + 1}'),
                   );
                 },
                 separatorBuilder: (context, index) => const Divider(),
