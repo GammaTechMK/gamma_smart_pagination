@@ -2,6 +2,7 @@ name: gamma_smart_pagination
 description: Flutter package for infinite scrolling pagination, which supports pull down to refresh and pull up to load more.
 version: 0.0.2
 repository: https://github.com/GammaTechMK/gamma_smart_pagination
+publish_to: none
 
 environment:
   sdk: '>=3.0.1 <4.0.0'
@@ -10,11 +11,14 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  freezed_annotation: ^2.2.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  freezed: ^2.3.5
+  build_runner: ^2.4.5
 
 # The following section is specific to Flutter packages.
 flutter:

@@ -71,27 +71,33 @@ class _SecondScreenState extends ConsumerState<SecondScreen> {
             onRefresh: () => viewmodel.refreshItems(),
             onLoadMore: () => viewmodel.loadMoreItems(),
             itemCount: state.itemsList.length,
-            itemBuilder: (context, index) => Dismissible(
-              key: Key('${state.itemsList[index]}_smart_pagination_item_key'),
-              onDismissed: (direction) => viewmodel.removeItem(index),
-              confirmDismiss: (direction) => showConfirmDismissDialog(context),
-              direction: DismissDirection.endToStart,
-              background: Container(
-                color: Colors.red,
-                child: const Align(
-                  alignment: Alignment.centerRight,
-                  child: Padding(
-                    padding: EdgeInsets.only(right: 16.0),
-                    child: Icon(
-                      Icons.delete,
-                      color: Colors.white,
+            child: ListView.separated(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemBuilder: (context, index) => Dismissible(
+                key: Key('${state.itemsList[index]}_smart_pagination_item_key'),
+                onDismissed: (direction) => viewmodel.removeItem(index),
+                confirmDismiss: (direction) => showConfirmDismissDialog(context),
+                direction: DismissDirection.endToStart,
+                background: Container(
+                  color: Colors.red,
+                  child: const Align(
+                    alignment: Alignment.centerRight,
+                    child: Padding(
+                      padding: EdgeInsets.only(right: 16.0),
+                      child: Icon(
+                        Icons.delete,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ),
+                child: ListTile(
+                  title: Text(state.itemsList[index]),
+                ),
               ),
-              child: ListTile(
-                title: Text(state.itemsList[index]),
-              ),
+              separatorBuilder: (context, index) => const Divider(),
+              itemCount: state.itemsList.length,
             ),
           ),
         ),

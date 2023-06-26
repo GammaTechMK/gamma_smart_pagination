@@ -39,19 +39,13 @@ class FirstScreenViewmodel extends StateNotifier<FirstScreenState> {
     );
   }
 
-  void setStatus(GammaSmartControllerStatus status) {
-    state.hrAppRefreshController.setStatus(status);
-  }
-
   Future<void> loadMoreItems() async {
     if (!state.hasNext) {
-      setStatus(GammaSmartControllerStatus.loadingNoMoreItems);
+      state.hrAppRefreshController.setNoMoreData();
       return;
     }
 
-    debugPrint('loadMoreItems called ...');
-
-    setStatus(GammaSmartControllerStatus.loading);
+    state.hrAppRefreshController.setLoading();
 
     final newItemsList = await itemsService.getItems(
       perPage: state.perPage,
@@ -63,11 +57,11 @@ class FirstScreenViewmodel extends StateNotifier<FirstScreenState> {
       hasNext: true,
     );
 
-    setStatus(GammaSmartControllerStatus.idle);
+    state.hrAppRefreshController.setIdle();
   }
 
   Future<void> refreshItems() async {
-    setStatus(GammaSmartControllerStatus.refreshing);
+    state.hrAppRefreshController.setRefreshing();
     final newItemsList = await itemsService.getItems(
       perPage: state.perPage,
       currentItemsLength: 0,
@@ -76,7 +70,7 @@ class FirstScreenViewmodel extends StateNotifier<FirstScreenState> {
       itemsList: newItemsList,
       hasNext: true,
     );
-    setStatus(GammaSmartControllerStatus.idle);
+    state.hrAppRefreshController.setIdle();
   }
 
   void removeItem(int index) {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gamma_smart_pagination/gamma_smart_pagination.dart';
 
+import '../state/third_screen_state.dart';
 import '../viewmodel/third_screen_viewmodel.dart';
 
 class ThirdScreen extends ConsumerStatefulWidget {
@@ -36,7 +37,7 @@ class _ThirdScreenState extends ConsumerState<ThirdScreen> {
         ),
       ),
       body: SafeArea(
-        child: state.isLoading ? _buildLoadingIndicator() : _buildBody(context),
+        child: state.isLoading ? _buildLoadingIndicator() : _buildBody(context, state),
       ),
     );
   }
@@ -49,6 +50,7 @@ class _ThirdScreenState extends ConsumerState<ThirdScreen> {
 
   Widget _buildBody(
     BuildContext context,
+    ThirdScreenState state,
   ) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -57,9 +59,15 @@ class _ThirdScreenState extends ConsumerState<ThirdScreen> {
           child: GammaSmartPagination(
             gammaSmartController: GammaSmartController(),
             scrollController: ScrollController(),
-            itemCount: 0,
-            itemBuilder: (context, index) => ListTile(
-              title: Text('Item $index'),
+            itemCount: state.itemsList.length,
+            child: ListView.separated(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemBuilder: (context, index) => ListTile(
+                title: Text('Item $index'),
+              ),
+              separatorBuilder: (context, index) => const Divider(),
+              itemCount: state.itemsList.length,
             ),
           ),
         ),

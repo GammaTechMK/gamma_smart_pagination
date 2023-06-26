@@ -37,19 +37,13 @@ class SecondScreenViewmodel extends StateNotifier<SecondScreenState> {
     );
   }
 
-  void setStatus(GammaSmartControllerStatus status) {
-    state.hrAppRefreshController.setStatus(status);
-  }
-
   Future<void> loadMoreItems() async {
     if (!state.hasNext) {
-      setStatus(GammaSmartControllerStatus.loadingNoMoreItems);
+      state.hrAppRefreshController.setNoMoreData();
       return;
     }
 
-    debugPrint('loadMoreItems called ...');
-
-    setStatus(GammaSmartControllerStatus.loading);
+    state.hrAppRefreshController.setLoading();
 
     final newItemsList = await itemsService.getItems(
       perPage: state.perPage,
@@ -61,11 +55,11 @@ class SecondScreenViewmodel extends StateNotifier<SecondScreenState> {
       hasNext: false,
     );
 
-    setStatus(GammaSmartControllerStatus.idle);
+    state.hrAppRefreshController.setIdle();
   }
 
   Future<void> refreshItems() async {
-    setStatus(GammaSmartControllerStatus.refreshing);
+    state.hrAppRefreshController.setRefreshing();
     final newItemsList = await itemsService.getItems(
       perPage: state.perPage,
       currentItemsLength: 0,
@@ -74,7 +68,7 @@ class SecondScreenViewmodel extends StateNotifier<SecondScreenState> {
       itemsList: newItemsList,
       hasNext: true,
     );
-    setStatus(GammaSmartControllerStatus.idle);
+    state.hrAppRefreshController.setIdle();
   }
 
   void removeItem(int index) {
