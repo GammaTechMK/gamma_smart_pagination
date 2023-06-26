@@ -15,11 +15,11 @@ class SecondScreenViewmodel extends StateNotifier<SecondScreenState> {
   final ItemsService itemsService;
   SecondScreenViewmodel({
     required this.itemsService,
-    GammaSmartController? hrAppRefreshController,
+    GammaController? hrAppRefreshController,
     ScrollController? scrollController,
   }) : super(
           SecondScreenState(
-            hrAppRefreshController: hrAppRefreshController ?? GammaSmartController(),
+            hrAppRefreshController: hrAppRefreshController ?? GammaController(),
             scrollController: scrollController ?? ScrollController(),
           ),
         );

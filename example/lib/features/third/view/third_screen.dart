@@ -57,7 +57,7 @@ class _ThirdScreenState extends ConsumerState<ThirdScreen> {
       children: <Widget>[
         Expanded(
           child: GammaSmartPagination(
-            gammaSmartController: GammaSmartController(),
+            gammaSmartController: GammaController(),
             scrollController: ScrollController(),
             itemCount: state.itemsList.length,
             child: ListView.separated(

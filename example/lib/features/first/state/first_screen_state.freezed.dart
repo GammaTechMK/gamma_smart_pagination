@@ -16,8 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$FirstScreenState {
-  GammaSmartController get hrAppRefreshController =>
-      throw _privateConstructorUsedError;
+  GammaController get hrAppRefreshController => throw _privateConstructorUsedError;
   ScrollController get scrollController => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   List<String> get itemsList => throw _privateConstructorUsedError;
@@ -25,18 +24,16 @@ mixin _$FirstScreenState {
   int get perPage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $FirstScreenStateCopyWith<FirstScreenState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $FirstScreenStateCopyWith<FirstScreenState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $FirstScreenStateCopyWith<$Res> {
-  factory $FirstScreenStateCopyWith(
-          FirstScreenState value, $Res Function(FirstScreenState) then) =
+  factory $FirstScreenStateCopyWith(FirstScreenState value, $Res Function(FirstScreenState) then) =
       _$FirstScreenStateCopyWithImpl<$Res, FirstScreenState>;
   @useResult
   $Res call(
-      {GammaSmartController hrAppRefreshController,
+      {GammaController hrAppRefreshController,
       ScrollController scrollController,
       bool isLoading,
       List<String> itemsList,
@@ -68,7 +65,7 @@ class _$FirstScreenStateCopyWithImpl<$Res, $Val extends FirstScreenState>
       hrAppRefreshController: null == hrAppRefreshController
           ? _value.hrAppRefreshController
           : hrAppRefreshController // ignore: cast_nullable_to_non_nullable
-              as GammaSmartController,
+              as GammaController,
       scrollController: null == scrollController
           ? _value.scrollController
           : scrollController // ignore: cast_nullable_to_non_nullable
@@ -94,15 +91,14 @@ class _$FirstScreenStateCopyWithImpl<$Res, $Val extends FirstScreenState>
 }
 
 /// @nodoc
-abstract class _$$_FirstScreenStateCopyWith<$Res>
-    implements $FirstScreenStateCopyWith<$Res> {
+abstract class _$$_FirstScreenStateCopyWith<$Res> implements $FirstScreenStateCopyWith<$Res> {
   factory _$$_FirstScreenStateCopyWith(
           _$_FirstScreenState value, $Res Function(_$_FirstScreenState) then) =
       __$$_FirstScreenStateCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {GammaSmartController hrAppRefreshController,
+      {GammaController hrAppRefreshController,
       ScrollController scrollController,
       bool isLoading,
       List<String> itemsList,
@@ -132,7 +128,7 @@ class __$$_FirstScreenStateCopyWithImpl<$Res>
       hrAppRefreshController: null == hrAppRefreshController
           ? _value.hrAppRefreshController
           : hrAppRefreshController // ignore: cast_nullable_to_non_nullable
-              as GammaSmartController,
+              as GammaController,
       scrollController: null == scrollController
           ? _value.scrollController
           : scrollController // ignore: cast_nullable_to_non_nullable
@@ -170,7 +166,7 @@ class _$_FirstScreenState implements _FirstScreenState {
       : _itemsList = itemsList;
 
   @override
-  final GammaSmartController hrAppRefreshController;
+  final GammaController hrAppRefreshController;
   @override
   final ScrollController scrollController;
   @override
@@ -206,23 +202,15 @@ class _$_FirstScreenState implements _FirstScreenState {
                 other.hrAppRefreshController == hrAppRefreshController) &&
             (identical(other.scrollController, scrollController) ||
                 other.scrollController == scrollController) &&
-            (identical(other.isLoading, isLoading) ||
-                other.isLoading == isLoading) &&
-            const DeepCollectionEquality()
-                .equals(other._itemsList, _itemsList) &&
+            (identical(other.isLoading, isLoading) || other.isLoading == isLoading) &&
+            const DeepCollectionEquality().equals(other._itemsList, _itemsList) &&
             (identical(other.hasNext, hasNext) || other.hasNext == hasNext) &&
             (identical(other.perPage, perPage) || other.perPage == perPage));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      hrAppRefreshController,
-      scrollController,
-      isLoading,
-      const DeepCollectionEquality().hash(_itemsList),
-      hasNext,
-      perPage);
+  int get hashCode => Object.hash(runtimeType, hrAppRefreshController, scrollController, isLoading,
+      const DeepCollectionEquality().hash(_itemsList), hasNext, perPage);
 
   @JsonKey(ignore: true)
   @override
@@ -233,7 +221,7 @@ class _$_FirstScreenState implements _FirstScreenState {
 
 abstract class _FirstScreenState implements FirstScreenState {
   const factory _FirstScreenState(
-      {required final GammaSmartController hrAppRefreshController,
+      {required final GammaController hrAppRefreshController,
       required final ScrollController scrollController,
       final bool isLoading,
       final List<String> itemsList,
@@ -241,7 +229,7 @@ abstract class _FirstScreenState implements FirstScreenState {
       final int perPage}) = _$_FirstScreenState;
 
   @override
-  GammaSmartController get hrAppRefreshController;
+  GammaController get hrAppRefreshController;
   @override
   ScrollController get scrollController;
   @override

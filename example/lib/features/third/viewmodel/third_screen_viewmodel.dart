@@ -15,11 +15,11 @@ class ThirdScreenViewmodel extends StateNotifier<ThirdScreenState> {
   final ItemsService itemsService;
   ThirdScreenViewmodel({
     required this.itemsService,
-    GammaSmartController? hrAppRefreshController,
+    GammaController? hrAppRefreshController,
     ScrollController? scrollController,
   }) : super(
           ThirdScreenState(
-            hrAppRefreshController: hrAppRefreshController ?? GammaSmartController(),
+            hrAppRefreshController: hrAppRefreshController ?? GammaController(),
             scrollController: scrollController ?? ScrollController(),
           ),
         );

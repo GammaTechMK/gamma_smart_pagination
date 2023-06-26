@@ -34,8 +34,12 @@ import 'package:gamma_smart_pagination/gamma_smart_pagination.dart';
 
 ## How to use
 
-Simply create a `GammaSmartPagination` widget, and pass it the required `GammaSmartController` and `ScrollController` along with any other available params.
-> Tip: Keep in mind that `GammaSmartPagination` is actually a `SingleChildScrollView`, so be mindful to not have unbounded height in the parent widget
+1. Simply create a `GammaSmartPagination` widget.
+2. Wrap it around any scrollable widget (ListView / GridView).
+3. Pass it the required `GammaController` and `ScrollController` along with any other available params.
+
+> Tip: Keep in mind that `GammaSmartPagination` is actually a `SingleChildScrollView`, so be mindful to not have unbounded height in the parent widget.
+(ListViews wrapped with GammaSmartPagination need to have `shrinkWrap:true` and `NeverScrollableScrollPhysics`.)
 
 ```dart
 class ExampleApp extends StatefulWidget {
@@ -46,7 +50,7 @@ class ExampleApp extends StatefulWidget {
 }
 
 class _ExampleAppState extends State<ExampleApp> {
-  GammaSmartController gammaSmartController = GammaSmartController();
+  GammaController gammaController = GammaController();
   ScrollController scrollController = ScrollController();
 
   List<String> itemsList = [];
@@ -83,13 +87,19 @@ class _ExampleAppState extends State<ExampleApp> {
         Expanded(
           // This is the important part:
           child: GammaSmartPagination(
-            gammaSmartController: gammaSmartController,
+            gammaSmartController: gammaController,
             scrollController: scrollController,
             onLoadMore: () => loadMore(),
             onRefresh: () => refreshItems(),
             itemCount: itemsList.length,
-            itemBuilder: (context, index) => ListTile(
-              title: Text(itemsList[index]),
+            child: ListView.separated(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemBuilder: (context, index) => ListTile(
+                title: Text(itemsList[index]),
+              ),
+              separatorBuilder: (context, index) => const Divider(),
+              itemCount: itemsList.length,
             ),
           ),
         ),
@@ -109,7 +119,7 @@ class _ExampleAppState extends State<ExampleApp> {
     final fakeItems = List.generate(10, (index) => 'Item ${index + 1}');
     // Update the controller status to completed or failed based on the result
     // If it is the initial request for data, you can use the idle or failed status
-    gammaSmartController.setStatus(GammaSmartControllerStatus.idle);
+    gammaController.setIdle();
     setState(() {
       itemsList = fakeItems;
       isLoading = false;
@@ -120,7 +130,7 @@ class _ExampleAppState extends State<ExampleApp> {
     await Future.delayed(const Duration(seconds: 1));
     final fakeItems = List.generate(10, (index) => 'Item ${itemsList.length + index + 1}');
     // Update the controller status to completed or failed based on the result
-    gammaSmartController.setStatus(GammaSmartControllerStatus.loadingCompleted);
+    gammaController.setLoadingCompleted();
     setState(() {
       itemsList = [...itemsList, ...fakeItems];
     });
@@ -130,7 +140,7 @@ class _ExampleAppState extends State<ExampleApp> {
     await Future.delayed(const Duration(seconds: 1));
     final fakeItems = List.generate(10, (index) => 'Item ${index + 1}');
     // Update the controller status to completed or failed based on the result
-    gammaSmartController.setStatus(GammaSmartControllerStatus.refreshingCompleted);
+    gammaController.setRefreshingCompleted();
     setState(() {
       itemsList = fakeItems;
     });
@@ -139,7 +149,7 @@ class _ExampleAppState extends State<ExampleApp> {
   @override
   void dispose() {
     // Don't forget to dispose the controllers
-    gammaSmartController.dispose();
+    gammaController.dispose();
     scrollController.dispose();
     super.dispose();
   }
@@ -156,7 +166,7 @@ For a full example check out the [Example app](https://github.com/GammaTechMK/ga
 GammaSmartPagination(
   key: const Key('firstScreenInfinitePagination'),
   // Required (for status updates)
-  gammaSmartController: GammaSmartController(),
+  gammaController: GammaController(),
   // Required (for triggering load more when scrolled to bottom)
   scrollController: ScrollController,
   // Future<void> Callback when user scrolls to the bottom of the list

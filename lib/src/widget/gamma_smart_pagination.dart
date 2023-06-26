@@ -12,8 +12,8 @@ import 'package:gamma_smart_pagination/src/helpers/extensions.dart';
 ///
 /// The optional parameters come with general default widgets, but you can override them with your own widgets.
 class GammaSmartPagination extends StatefulWidget {
-  /// [GammaSmartController] that will be used to control the status of the pagination.
-  final GammaSmartController gammaSmartController;
+  /// [GammaController] that will be used to control the status of the pagination.
+  final GammaController gammaSmartController;
 
   /// [ScrollController] that will be used to control the scroll position of the list internally.
   final ScrollController scrollController;
@@ -70,8 +70,8 @@ class GammaSmartPagination extends StatefulWidget {
 }
 
 class _GammaSmartPaginationState extends State<GammaSmartPagination> {
-  /// [GammaSmartController] that will be used to control the status of the pagination.
-  GammaSmartController get _customController => widget.gammaSmartController;
+  /// [GammaController] that will be used to control the status of the pagination.
+  GammaController get _customController => widget.gammaSmartController;
 
   /// [ScrollController] that will be used to control the scroll position of the list internally.
   ScrollController get _scrollController => widget.scrollController;

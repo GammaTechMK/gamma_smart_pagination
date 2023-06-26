@@ -16,8 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SecondScreenState {
-  GammaSmartController get hrAppRefreshController =>
-      throw _privateConstructorUsedError;
+  GammaController get hrAppRefreshController => throw _privateConstructorUsedError;
   ScrollController get scrollController => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   List<String> get itemsList => throw _privateConstructorUsedError;
@@ -25,8 +24,7 @@ mixin _$SecondScreenState {
   int get perPage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $SecondScreenStateCopyWith<SecondScreenState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $SecondScreenStateCopyWith<SecondScreenState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -36,7 +34,7 @@ abstract class $SecondScreenStateCopyWith<$Res> {
       _$SecondScreenStateCopyWithImpl<$Res, SecondScreenState>;
   @useResult
   $Res call(
-      {GammaSmartController hrAppRefreshController,
+      {GammaController hrAppRefreshController,
       ScrollController scrollController,
       bool isLoading,
       List<String> itemsList,
@@ -68,7 +66,7 @@ class _$SecondScreenStateCopyWithImpl<$Res, $Val extends SecondScreenState>
       hrAppRefreshController: null == hrAppRefreshController
           ? _value.hrAppRefreshController
           : hrAppRefreshController // ignore: cast_nullable_to_non_nullable
-              as GammaSmartController,
+              as GammaController,
       scrollController: null == scrollController
           ? _value.scrollController
           : scrollController // ignore: cast_nullable_to_non_nullable
@@ -94,15 +92,14 @@ class _$SecondScreenStateCopyWithImpl<$Res, $Val extends SecondScreenState>
 }
 
 /// @nodoc
-abstract class _$$_SecondScreenStateCopyWith<$Res>
-    implements $SecondScreenStateCopyWith<$Res> {
-  factory _$$_SecondScreenStateCopyWith(_$_SecondScreenState value,
-          $Res Function(_$_SecondScreenState) then) =
+abstract class _$$_SecondScreenStateCopyWith<$Res> implements $SecondScreenStateCopyWith<$Res> {
+  factory _$$_SecondScreenStateCopyWith(
+          _$_SecondScreenState value, $Res Function(_$_SecondScreenState) then) =
       __$$_SecondScreenStateCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {GammaSmartController hrAppRefreshController,
+      {GammaController hrAppRefreshController,
       ScrollController scrollController,
       bool isLoading,
       List<String> itemsList,
@@ -132,7 +129,7 @@ class __$$_SecondScreenStateCopyWithImpl<$Res>
       hrAppRefreshController: null == hrAppRefreshController
           ? _value.hrAppRefreshController
           : hrAppRefreshController // ignore: cast_nullable_to_non_nullable
-              as GammaSmartController,
+              as GammaController,
       scrollController: null == scrollController
           ? _value.scrollController
           : scrollController // ignore: cast_nullable_to_non_nullable
@@ -170,7 +167,7 @@ class _$_SecondScreenState implements _SecondScreenState {
       : _itemsList = itemsList;
 
   @override
-  final GammaSmartController hrAppRefreshController;
+  final GammaController hrAppRefreshController;
   @override
   final ScrollController scrollController;
   @override
@@ -206,35 +203,26 @@ class _$_SecondScreenState implements _SecondScreenState {
                 other.hrAppRefreshController == hrAppRefreshController) &&
             (identical(other.scrollController, scrollController) ||
                 other.scrollController == scrollController) &&
-            (identical(other.isLoading, isLoading) ||
-                other.isLoading == isLoading) &&
-            const DeepCollectionEquality()
-                .equals(other._itemsList, _itemsList) &&
+            (identical(other.isLoading, isLoading) || other.isLoading == isLoading) &&
+            const DeepCollectionEquality().equals(other._itemsList, _itemsList) &&
             (identical(other.hasNext, hasNext) || other.hasNext == hasNext) &&
             (identical(other.perPage, perPage) || other.perPage == perPage));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      hrAppRefreshController,
-      scrollController,
-      isLoading,
-      const DeepCollectionEquality().hash(_itemsList),
-      hasNext,
-      perPage);
+  int get hashCode => Object.hash(runtimeType, hrAppRefreshController, scrollController, isLoading,
+      const DeepCollectionEquality().hash(_itemsList), hasNext, perPage);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$_SecondScreenStateCopyWith<_$_SecondScreenState> get copyWith =>
-      __$$_SecondScreenStateCopyWithImpl<_$_SecondScreenState>(
-          this, _$identity);
+      __$$_SecondScreenStateCopyWithImpl<_$_SecondScreenState>(this, _$identity);
 }
 
 abstract class _SecondScreenState implements SecondScreenState {
   const factory _SecondScreenState(
-      {required final GammaSmartController hrAppRefreshController,
+      {required final GammaController hrAppRefreshController,
       required final ScrollController scrollController,
       final bool isLoading,
       final List<String> itemsList,
@@ -242,7 +230,7 @@ abstract class _SecondScreenState implements SecondScreenState {
       final int perPage}) = _$_SecondScreenState;
 
   @override
-  GammaSmartController get hrAppRefreshController;
+  GammaController get hrAppRefreshController;
   @override
   ScrollController get scrollController;
   @override

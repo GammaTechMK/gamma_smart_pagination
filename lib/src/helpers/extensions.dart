@@ -1,7 +1,7 @@
 import 'package:gamma_smart_pagination/gamma_smart_pagination.dart';
 
-/// Extension on [GammaSmartController] to check if the controller should load more items.
-extension ShouldLoadMore on GammaSmartController {
+/// Extension on [GammaController] to check if the controller should load more items.
+extension ShouldLoadMore on GammaController {
   /// Returns true if the controller should load more items.
   /// Returns false if the controller is in any of the following states:
   /// - [GammaControllerStatus.loading]

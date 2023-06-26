@@ -7,7 +7,7 @@ part 'second_screen_state.freezed.dart';
 @freezed
 class SecondScreenState with _$SecondScreenState {
   const factory SecondScreenState({
-    required GammaSmartController hrAppRefreshController,
+    required GammaController hrAppRefreshController,
     required ScrollController scrollController,
     @Default(false) bool isLoading,
     @Default([]) List<String> itemsList,

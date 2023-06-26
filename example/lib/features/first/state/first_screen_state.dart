@@ -7,7 +7,7 @@ part 'first_screen_state.freezed.dart';
 @freezed
 class FirstScreenState with _$FirstScreenState {
   const factory FirstScreenState({
-    required GammaSmartController hrAppRefreshController,
+    required GammaController hrAppRefreshController,
     required ScrollController scrollController,
     @Default(false) bool isLoading,
     @Default([]) List<String> itemsList,

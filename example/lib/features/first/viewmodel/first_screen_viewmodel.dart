@@ -17,11 +17,11 @@ class FirstScreenViewmodel extends StateNotifier<FirstScreenState> {
   final ItemsService itemsService;
   FirstScreenViewmodel({
     required this.itemsService,
-    GammaSmartController? hrAppRefreshController,
+    GammaController? hrAppRefreshController,
     ScrollController? scrollController,
   }) : super(
           FirstScreenState(
-            hrAppRefreshController: hrAppRefreshController ?? GammaSmartController(),
+            hrAppRefreshController: hrAppRefreshController ?? GammaController(),
             scrollController: scrollController ?? ScrollController(),
           ),
         );

@@ -5,11 +5,11 @@ import 'gamma_controller_status.dart';
 /// A controller to handle the state of the GammaSmartPagination widget.
 /// It is used to control the state of the widget and to notify the widget
 /// when the state changes
-class GammaSmartController extends ChangeNotifier {
+class GammaController extends ChangeNotifier {
   late GammaControllerStatus _status;
 
-  /// [GammaSmartController] constructor.
-  GammaSmartController() {
+  /// [GammaController] constructor.
+  GammaController() {
     _status = const GammaControllerStatus.idle();
   }
 
