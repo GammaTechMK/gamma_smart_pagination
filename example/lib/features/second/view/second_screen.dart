@@ -93,6 +93,9 @@ class _SecondScreenState extends ConsumerState<SecondScreen> {
                 title: Text(state.itemsList[index]),
               ),
             ),
+            separatorBuilder: (context, index) {
+              return const Divider();
+            },
           ),
         ),
         ElevatedButton(

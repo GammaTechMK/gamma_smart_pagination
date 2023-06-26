@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gamma_smart_pagination/src/helpers/extensions.dart';
 
 import '../controller/gamma_smart_controller.dart';
 import '../controller/smart_controller_status.dart';
@@ -15,7 +16,7 @@ class GammaSmartPagination extends StatefulWidget {
   final Widget? loadingFailedWidget;
   final Widget? refreshFailedWidget;
   final Widget? loadingIndicator;
-  final Widget? separator;
+  final Widget Function(BuildContext context, int index)? separatorBuilder;
   const GammaSmartPagination({
     super.key,
     required this.gammaSmartController,
@@ -29,7 +30,7 @@ class GammaSmartPagination extends StatefulWidget {
     this.refreshFailedWidget,
     this.noInitialDataWidget,
     this.loadingIndicator,
-    this.separator,
+    this.separatorBuilder,
   });
 
   @override
@@ -40,27 +41,23 @@ class _GammaSmartPaginationState extends State<GammaSmartPagination> {
   GammaSmartController get _customController => widget.gammaSmartController;
   ScrollController get _scrollController => widget.scrollController;
 
-  static const double _sensitivityFactor = 0.0;
+  static const double _sensitivityFactor = 300.0;
+  static const int _throttleDuration = 200;
 
   final wipedGrayTextColorStyle = TextStyle(color: Colors.grey.shade400);
 
   @override
   void initState() {
-    _scrollController.addListener(_scrollPositionListener);
+    _scrollController.onBottomReach(
+      () {
+        if (_customController.shouldLoadMore) {
+          onLoadMore();
+        }
+      },
+      sensitivity: _sensitivityFactor,
+      throttleDuration: const Duration(milliseconds: _throttleDuration),
+    );
     super.initState();
-  }
-
-  Future<void> _scrollPositionListener() async {
-    if (_scrollController.position.pixels >=
-        (_scrollController.position.maxScrollExtent - _sensitivityFactor)) {
-      if (_customController.status == GammaSmartControllerStatus.idle ||
-          _customController.status == GammaSmartControllerStatus.loadingCompleted ||
-          _customController.status == GammaSmartControllerStatus.loadingNoMoreItems) {
-        _customController.removeListener(_scrollPositionListener);
-        await onLoadMore();
-        _customController.addListener(_scrollPositionListener);
-      }
-    }
   }
 
   // call onLoadMore() only when status is idle, loadingComplete, loadingNoMoreItems
@@ -92,7 +89,14 @@ class _GammaSmartPaginationState extends State<GammaSmartPagination> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            _buildBody(),
+            ListView.separated(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: widget.itemCount,
+              itemBuilder: (context, index) => widget.itemBuilder(context, index),
+              separatorBuilder: (context, index) =>
+                  widget.separatorBuilder?.call(context, index) ?? const SizedBox.shrink(),
+            ),
             _buildFooter(),
           ],
         ),
@@ -110,46 +114,20 @@ class _GammaSmartPaginationState extends State<GammaSmartPagination> {
     );
   }
 
-  Widget _buildBody() {
-    // Return normal or separated list
-    if (widget.separator == null) {
-      return ListView.builder(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        itemCount: widget.itemCount,
-        itemBuilder: (context, index) => widget.itemBuilder(context, index),
-      );
-    } else {
-      return ListView.separated(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        itemCount: widget.itemCount,
-        itemBuilder: (context, index) => widget.itemBuilder(context, index),
-        separatorBuilder: (context, index) => widget.separator!,
-      );
-    }
-  }
-
   Widget _buildFooter() {
     if (_customController.status == GammaSmartControllerStatus.loading) {
-      return SizedBox(
-        height: 60,
-        child: Center(
-          child: widget.loadingIndicator ?? const CircularProgressIndicator.adaptive(),
-        ),
+      return Center(
+        child: widget.loadingIndicator ?? const CircularProgressIndicator.adaptive(),
       );
     }
 
     if (_customController.status == GammaSmartControllerStatus.loadingNoMoreItems) {
-      return SizedBox(
-        height: 60,
-        child: Center(
-          child: widget.noMoreDataWidget ??
-              Text(
-                'No more items to load',
-                style: wipedGrayTextColorStyle,
-              ),
-        ),
+      return Center(
+        child: widget.noMoreDataWidget ??
+            Text(
+              'No more items to load',
+              style: wipedGrayTextColorStyle,
+            ),
       );
     }
 
