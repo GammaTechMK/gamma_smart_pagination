@@ -66,18 +66,25 @@ class _FirstScreenState extends ConsumerState<FirstScreen> {
       children: <Widget>[
         Expanded(
           child: GammaSmartPagination(
-            gammaSmartController: state.hrAppRefreshController,
-            scrollController: state.scrollController,
-            onRefresh: () => viewmodel.refreshItems(),
-            onLoadMore: () => viewmodel.loadMoreItems(),
-            itemCount: state.itemsList.length,
-            itemBuilder: (context, index) => Dismissible(
-              key: Key('${state.itemsList[index]}_smart_pagination_item_key'),
-              child: ListTile(
-                title: Text(state.itemsList[index]),
-              ),
-            ),
-          ),
+              enableLogging: true,
+              gammaSmartController: state.hrAppRefreshController,
+              scrollController: state.scrollController,
+              onRefresh: () => viewmodel.refreshItems(),
+              onLoadMore: () => viewmodel.loadMoreItems(),
+              itemCount: state.itemsList.length,
+              child: ListView.separated(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: state.itemsList.length,
+                itemBuilder: (context, index) {
+                  final item = state.itemsList[index];
+                  return ListTile(
+                    title: Text(item),
+                    subtitle: Text('Example item description #${index + 1}'),
+                  );
+                },
+                separatorBuilder: (context, index) => const Divider(),
+              )),
         ),
         ElevatedButton(
           onPressed: () => {

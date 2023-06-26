@@ -166,7 +166,7 @@ class _$_FirstScreenState implements _FirstScreenState {
       this.isLoading = false,
       final List<String> itemsList = const [],
       this.hasNext = false,
-      this.perPage = 20})
+      this.perPage = 9})
       : _itemsList = itemsList;
 
   @override

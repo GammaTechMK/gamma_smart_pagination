@@ -12,6 +12,6 @@ class FirstScreenState with _$FirstScreenState {
     @Default(false) bool isLoading,
     @Default([]) List<String> itemsList,
     @Default(false) bool hasNext,
-    @Default(20) int perPage,
+    @Default(9) int perPage,
   }) = _FirstScreenState;
 }
