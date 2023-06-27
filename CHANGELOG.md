@@ -1,3 +1,7 @@
+## 1.0.2
+* Updated README
+* Removed other platforms except ios and android (since the package is not tested yet on other platforms)
+
 ## 1.0.1
 * Updated code docs
 * Internal / non-public facing method names updated

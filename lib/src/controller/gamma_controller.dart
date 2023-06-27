@@ -72,7 +72,7 @@ class GammaController extends ChangeNotifier {
 
   /// set the controller status to loadingFailed.
   /// Use this method when the widget failed to load more data.
-  /// @Params: [errorMessage] is the error message that will be displayed in the footer.
+  /// [errorMessage] is the error message that will be displayed in the footer.
   void setLoadingFailed({String? errorMessage}) {
     _status = GammaControllerStatus.loadingFailed(errorMessage: errorMessage);
     notifyListeners();
