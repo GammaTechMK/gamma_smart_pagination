@@ -39,6 +39,9 @@ class GammaSmartPagination extends StatefulWidget {
   /// Widget that will be displayed when the list is loading more data.
   final Widget? loadingIndicator;
 
+  /// The amount of space by which to trigger reload when scroll reaches the end of the list.
+  final double? scrollSensitivityTrigger;
+
   /// Enable logging when set to true.
   final bool enableLogging;
 
@@ -64,6 +67,7 @@ class GammaSmartPagination extends StatefulWidget {
     this.refreshFailedWidget,
     this.noInitialDataWidget,
     this.loadingIndicator,
+    this.scrollSensitivityTrigger,
     this.enableLogging = false,
   });
 
@@ -79,7 +83,7 @@ class _GammaSmartPaginationState extends State<GammaSmartPagination> {
   ScrollController get _scrollController => widget.scrollController;
 
   /// factor to determine if the user has reached the bottom of the list.
-  static const double _sensitivityFactor = 200.0;
+  static const double _defaultSensitivityFactor = 200.0;
 
   final wipedGrayTextColorStyle = TextStyle(color: Colors.grey.shade400);
   final errorTextColorStyle = TextStyle(color: Colors.red.shade300);
@@ -106,7 +110,11 @@ class _GammaSmartPaginationState extends State<GammaSmartPagination> {
   void _onBottomReached() {
     final maxScroll = _scrollController.position.maxScrollExtent;
     final currentScroll = _scrollController.position.pixels;
-    if (currentScroll >= (maxScroll - _sensitivityFactor)) {
+    final sensitivityFactor = widget.scrollSensitivityTrigger ?? _defaultSensitivityFactor;
+
+    // If the user has scrolled to the bottom of the list, then call the onLoadMore callback.
+    // Additionaly checks the current GammaController status to prevent multiple calls.
+    if (currentScroll >= (maxScroll - sensitivityFactor)) {
       if (_customController.shouldLoadMore && currentScroll > 0) {
         _logLoadMoreCalled();
         _onLoadMore();
@@ -174,21 +182,34 @@ class _GammaSmartPaginationState extends State<GammaSmartPagination> {
             );
       },
       noMoreData: () {
-        return Center(
-          child: widget.noMoreDataWidget ??
-              Text(
-                'No more items to load.',
-                style: wipedGrayTextColorStyle,
+        return widget.noMoreDataWidget ??
+            Center(
+              child: SizedBox(
+                height: 60.0,
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    'No more items to load.',
+                    textAlign: TextAlign.center,
+                    style: wipedGrayTextColorStyle,
+                  ),
+                ),
               ),
-        );
+            );
       },
       loadingFailed: (errorMessage) {
         return Center(
-          child: widget.loadingFailedWidget ??
-              Text(
-                errorMessage ?? 'Failed to load more data...',
-                style: errorTextColorStyle,
-              ),
+          child: SizedBox(
+            height: 60.0,
+            child: Align(
+              alignment: Alignment.center,
+              child: widget.loadingFailedWidget ??
+                  Text(
+                    errorMessage ?? 'Failed to load more data...',
+                    style: errorTextColorStyle,
+                  ),
+            ),
+          ),
         );
       },
       orElse: () => const SizedBox.shrink(),

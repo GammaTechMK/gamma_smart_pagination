@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gamma_smart_pagination/gamma_smart_pagination.dart';
+import 'package:smart_pagination_example/features/gridview/view/gridview_example.dart';
 
 import '../state/third_screen_state.dart';
 import '../viewmodel/third_screen_viewmodel.dart';
@@ -70,6 +71,13 @@ class _ThirdScreenState extends ConsumerState<ThirdScreen> {
               itemCount: state.itemsList.length,
             ),
           ),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => const GridViewExample()));
+          },
+          child: const Text('GridView example'),
         ),
       ],
     );

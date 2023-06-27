@@ -21,10 +21,14 @@ Flutter package for implementing infinite scroll pagination, with support for pu
 
 * Flutter Android
 * Flutter iOS
+* Linux (NOT TESTED)
+* Windows (NOT TESTED)
+* MacOS (NOT TESTED)
+* Fuschia (NOT TESTED)
 
 ## Installation
 
-Add `gamma_smart_pagination: ^1.0.3` to your `pubspec.yaml` dependencies. And import it:
+Add `gamma_smart_pagination: ^1.0.4` to your `pubspec.yaml` dependencies. And import it:
 
 ```dart
 import 'package:gamma_smart_pagination/gamma_smart_pagination.dart';
@@ -167,6 +171,8 @@ GammaSmartPagination(
   gammaSmartController: GammaController(),
   // Required (for triggering load more when scrolled to bottom)
   scrollController: ScrollController(),
+  // The amount of space by which to trigger reload when scroll reaches the end of the list.
+  scrollSensitivityTrigger: 200.0,
   // Future<void> Callback when pull to refresh is triggered
   onRefresh: () => refreshItems(),
   // Future<void> Callback when user scrolls to the bottom of the list

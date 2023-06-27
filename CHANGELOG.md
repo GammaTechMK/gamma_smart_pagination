@@ -1,3 +1,9 @@
+## 1.0.4
+* Added GridView example (currently it supports only vertical scrolling GridView)
+* Updated positioning and alignment of Controller Status indicators in header and footer
+* Added `scrollSensitivityTrigger` parameter
+* Updated README
+
 ## 1.0.3
 * removed platform directories based on `https://github.com/flutter/flutter/pull/125292` (this fixes the depricated android embedding warning)
 * updated readme
