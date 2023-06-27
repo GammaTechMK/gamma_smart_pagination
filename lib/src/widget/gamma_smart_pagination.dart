@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gamma_smart_pagination/gamma_smart_pagination.dart';
-import 'package:gamma_smart_pagination/src/helpers/extensions.dart';
+import '../../gamma_smart_pagination.dart';
+import '../helpers/extensions.dart';
 
 /// [GammaSmartPagination] is a wrapper widget for scrollable widgets that enables
 /// pull to refresh and infinite scrolling pagination.
@@ -153,7 +153,7 @@ class _GammaSmartPaginationState extends State<GammaSmartPagination> {
         ));
   }
 
-  _buildNoInitialDataWidget() {
+  Widget _buildNoInitialDataWidget() {
     return Center(
       child: widget.noInitialDataWidget ??
           Text(

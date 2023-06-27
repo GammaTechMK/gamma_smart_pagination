@@ -1,4 +1,4 @@
-import 'package:gamma_smart_pagination/gamma_smart_pagination.dart';
+import '../../gamma_smart_pagination.dart';
 
 /// Extension on [GammaController] to check if the controller should load more items.
 extension ShouldLoadMore on GammaController {
