@@ -24,7 +24,7 @@ Flutter package for implementing infinite scroll pagination, with support for pu
 
 ## Installation
 
-Add `gamma_smart_pagination: ^1.0.2` to your `pubspec.yaml` dependencies. And import it:
+Add `gamma_smart_pagination: ^1.0.3` to your `pubspec.yaml` dependencies. And import it:
 
 ```dart
 import 'package:gamma_smart_pagination/gamma_smart_pagination.dart';

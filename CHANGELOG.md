@@ -1,3 +1,7 @@
+## 1.0.3
+* removed platform directories based on `https://github.com/flutter/flutter/pull/125292` (this fixes the depricated android embedding warning)
+* updated readme
+
 ## 1.0.2
 * Updated README
 * Removed other platforms except ios and android (since the package is not tested yet on other platforms)
