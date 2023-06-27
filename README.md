@@ -14,8 +14,8 @@ Flutter package for implementing infinite scroll pagination, with support for pu
 
 1. Pull down to refresh
 2. Pull up / scroll to bottom to load more
-3. Different controller statuses (example, loading, refreshing, noMoreData, loadingFailed, refreshingFailed etc...)
-4. Widgets to indicate status (example, no data loaded, errors when refreshing or loading more, no more items to load etc...)
+3. Different controller statuses (loading, refreshing, noMoreData, loadingFailed, refreshingFailed etc...)
+4. Widgets to indicate status (no data loaded, errors when refreshing or loading more, no more items to load etc...)
 
 ## Supported platforms
 
