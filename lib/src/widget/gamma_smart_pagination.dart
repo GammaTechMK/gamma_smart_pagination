@@ -2,15 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:gamma_smart_pagination/gamma_smart_pagination.dart';
 import 'package:gamma_smart_pagination/src/helpers/extensions.dart';
 
-/// [GammaSmartPagination] is a 2 in 1 widget that acts as a wrapper for scrollable widgets.
-/// It enables pull to refresh and infinite scrolling pagination.
-///
-/// Typically used as wrapper for [ListView], [GridView].
-///
-/// Important: The child widget must must have physics set to [NeverScrollableScrollPhysics] and shrinkWrap set to true.
-/// because the [GammaSmartPagination] widget will handle the scrolling internally.
-///
-/// The optional parameters come with general default widgets, but you can override them with your own widgets.
+/// [GammaSmartPagination] is a wrapper widget for scrollable widgets that enables
+/// pull to refresh and infinite scrolling pagination.
 class GammaSmartPagination extends StatefulWidget {
   /// [GammaController] that will be used to control the status of the pagination.
   final GammaController gammaSmartController;
@@ -48,7 +41,15 @@ class GammaSmartPagination extends StatefulWidget {
   /// [enableLogging] is a boolean that will enable logging when set to true.
   final bool enableLogging;
 
-  /// [GammaSmartPagination] Widget constructor.
+  /// [GammaSmartPagination] is a 2 in 1 widget that acts as a wrapper for scrollable widgets.
+  /// It enables pull to refresh and infinite scrolling pagination.
+  ///
+  /// Typically used as wrapper for [ListView], [GridView].
+  ///
+  /// Important: The child widget must must have physics set to [NeverScrollableScrollPhysics] and shrinkWrap set to true.
+  /// because the [GammaSmartPagination] widget will handle the scrolling internally.
+  ///
+  /// The optional parameters come with general default widgets, but you can override them with your own widgets.
   const GammaSmartPagination({
     super.key,
     required this.gammaSmartController,
