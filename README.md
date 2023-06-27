@@ -175,7 +175,15 @@ GammaSmartPagination(
   onLoadMore: () => loadMore(),
   // Required
   itemCount: itemsList.length,
-  // Required
+  // Required (Usually a ListView or GridView)
+  // IMPORTANT:
+  // shrinkWrap: true
+  // physics: const NeverScrollableScrollPhysics(),
+  //
+  // This is required because the GammaSmartPagination
+  // is a SingleChildScrollView, and any nested scrollable
+  // should be NON-scrollable, and shrink wrap set to true
+  // where needed
   child: ListView.builder(
     shrinkWrap: true,
     physics: const NeverScrollableScrollPhysics(),
