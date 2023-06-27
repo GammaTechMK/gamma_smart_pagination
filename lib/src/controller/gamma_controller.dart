@@ -15,12 +15,12 @@ class GammaController extends ChangeNotifier {
     _status = const GammaControllerStatus.idle();
   }
 
-  /// [attachListener] method to add a listener to the controller.
+  /// add a listener to the controller.
   void attachListener(VoidCallback listener) {
     _listeners.add(listener);
   }
 
-  /// [detachListener] method to remove a listener from the controller.
+  /// remove a listener from the controller.
   /// @Params: [listener] is the listener to be removed.
   /// If no listener is passed, all listeners will be removed.
   void detachListener({VoidCallback? listener}) {
@@ -31,7 +31,7 @@ class GammaController extends ChangeNotifier {
     }
   }
 
-  /// [listeners] getter for the controller listeners.
+  /// getter for the controller listeners.
   List<VoidCallback> get listeners => _listeners;
 
   /// Whether any [Listener] objects have attached themselves to the
@@ -41,13 +41,13 @@ class GammaController extends ChangeNotifier {
   /// must not be called.
   bool get hasClients => _listeners.isNotEmpty;
 
-  /// [GammaControllerStatus] getter for the controller status.
+  /// getter for the controller status.
   GammaControllerStatus get status => _status;
 
-  /// [statusString] getter for the controller status as a string.
+  /// getter for the controller status as a string.
   String get statusString => _status.toString();
 
-  /// [setIdle] method to set the controller status to idle.
+  /// set the controller status to idle.
   /// Use this method when the widget is first rendered.
   /// And also it can be used after the first load of data is completed.
   void setIdle() {
@@ -55,14 +55,14 @@ class GammaController extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// [setLoading] method to set the controller status to loading.
+  /// set the controller status to loading.
   /// Use this method when the widget is loading more data.
   void setLoading() {
     _status = const GammaControllerStatus.loading();
     notifyListeners();
   }
 
-  /// [setLoadingCompleted] method to set the controller status to loadingCompleted.
+  /// set the controller status to loadingCompleted.
   /// Use this method when the widget is done loading more data.
   /// But there is still more data to load.
   void setLoadingCompleted() {
@@ -70,7 +70,7 @@ class GammaController extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// [setLoadingFailed] method to set the controller status to loadingFailed.
+  /// set the controller status to loadingFailed.
   /// Use this method when the widget failed to load more data.
   /// @Params: [errorMessage] is the error message that will be displayed in the footer.
   void setLoadingFailed({String? errorMessage}) {
@@ -78,7 +78,7 @@ class GammaController extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// [setNoMoreData] method to set the controller status to noMoreData.
+  /// set the controller status to noMoreData.
   /// Use this method when the widget has loaded all the data.
   /// AND there is no more data to load.
   void setNoMoreData() {
@@ -86,21 +86,21 @@ class GammaController extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// [setRefreshFailed] method to set the controller status to refreshingFailed.
+  /// set the controller status to refreshingFailed.
   /// Use this method when the widget failed to refresh the data.
   void setRefreshFailed() {
     _status = const GammaControllerStatus.refreshingFailed();
     notifyListeners();
   }
 
-  /// [setRefreshing] method to set the controller status to refreshing.
+  /// set the controller status to refreshing.
   /// Use this method when the widget is refreshing the data.
   void setRefreshing() {
     _status = const GammaControllerStatus.refreshing();
     notifyListeners();
   }
 
-  /// [setRefreshingCompleted] method to set the controller status to refreshingCompleted.
+  /// set the controller status to refreshingCompleted.
   /// Use this method when the widget is done refreshing the data.
   void setRefreshingCompleted() {
     _status = const GammaControllerStatus.refreshingCompleted();

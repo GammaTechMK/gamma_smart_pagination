@@ -2,47 +2,48 @@ import 'package:flutter/material.dart';
 import '../../gamma_smart_pagination.dart';
 import '../helpers/extensions.dart';
 
-/// [GammaSmartPagination] is a wrapper widget for scrollable widgets that enables
+/// Wrapper widget for scrollable widgets that enables
 /// pull to refresh and infinite scrolling pagination.
 class GammaSmartPagination extends StatefulWidget {
-  /// [GammaController] that will be used to control the status of the pagination.
+  /// Controls for the status of the pagination.
   final GammaController gammaSmartController;
 
-  /// [ScrollController] that will be used to control the scroll position of the list internally.
+  /// Controls the scroll position of the list internally.
   final ScrollController scrollController;
 
-  /// [onLoadMore] is the callback that will be called when the user scrolls to the bottom of the list.
+  /// Callback that will be called when the user scrolls to the bottom of the list.
   final Future<void> Function()? onLoadMore;
 
-  /// [onRefresh] is the callback that will be called when the user pulls down the list.
+  /// Callback that will be called when the user pulls down the list.
   final Future<void> Function()? onRefresh;
 
-  /// [@required][child] is the scrollable child widget that will be wrapped by the GammaSmartPagination widget.
+  /// Scrollable child widget that will be wrapped by the GammaSmartPagination widget.
+  /// It must have physics set to [NeverScrollableScrollPhysics] and shrinkWrap set to true.
   final Widget child;
 
-  /// [@required][itemCount] is the number of items in the list.
+  /// Number of items in the list.
   final int itemCount;
 
-  /// [noInitialDataWidget] is the widget that will be displayed when the list is empty.
+  /// Widget that will be displayed when the list is empty.
   final Widget? noInitialDataWidget;
 
-  /// [noMoreDataWidget] is the widget that will be displayed when the list has loaded all the data.
+  /// Widget that will be displayed when the list has loaded all the data.
   final Widget? noMoreDataWidget;
 
-  /// [loadingFailedWidget] is the widget that will be displayed when the list failed to load more data.
+  /// Widget that will be displayed when the list failed to load more data.
   final Widget? loadingFailedWidget;
 
-  /// [refreshFailedWidget] is the widget that will be displayed when the list failed to refresh.
+  /// Widget that will be displayed when the list failed to refresh.
   final Widget? refreshFailedWidget;
 
-  /// [loadingIndicator] is the widget that will be displayed when the list is loading more data.
+  /// Widget that will be displayed when the list is loading more data.
   final Widget? loadingIndicator;
 
-  /// [enableLogging] is a boolean that will enable logging when set to true.
+  /// Enable logging when set to true.
   final bool enableLogging;
 
-  /// [GammaSmartPagination] is a 2 in 1 widget that acts as a wrapper for scrollable widgets.
-  /// It enables pull to refresh and infinite scrolling pagination.
+  /// Wrapper for scrollable widgets that enables
+  /// pull to refresh and infinite scrolling pagination.
   ///
   /// Typically used as wrapper for [ListView], [GridView].
   ///
@@ -71,13 +72,13 @@ class GammaSmartPagination extends StatefulWidget {
 }
 
 class _GammaSmartPaginationState extends State<GammaSmartPagination> {
-  /// [GammaController] that will be used to control the status of the pagination.
+  /// Controls the status of the pagination.
   GammaController get _customController => widget.gammaSmartController;
 
-  /// [ScrollController] that will be used to control the scroll position of the list internally.
+  /// Controls the scroll position of the list internally.
   ScrollController get _scrollController => widget.scrollController;
 
-  /// [sensitivityFactor] is the factor that will be used to determine if the user has reached the bottom of the list.
+  /// factor to determine if the user has reached the bottom of the list.
   static const double _sensitivityFactor = 200.0;
 
   final wipedGrayTextColorStyle = TextStyle(color: Colors.grey.shade400);
@@ -97,32 +98,33 @@ class _GammaSmartPaginationState extends State<GammaSmartPagination> {
 
   @override
   void initState() {
-    _scrollController.addListener(onBottomReached);
+    _scrollController.addListener(_onBottomReached);
     super.initState();
   }
 
-  /// [onBottomReached] is called when the user scrolls to the bottom of the list.
-  void onBottomReached() {
+  /// Callback when the user scrolls to the bottom of the list.
+  void _onBottomReached() {
     final maxScroll = _scrollController.position.maxScrollExtent;
     final currentScroll = _scrollController.position.pixels;
     if (currentScroll >= (maxScroll - _sensitivityFactor)) {
       if (_customController.shouldLoadMore && currentScroll > 0) {
         _logLoadMoreCalled();
-        onLoadMore();
+        _onLoadMore();
       }
     }
   }
 
-  /// [onLoadMore] is called when the user scrolls to the bottom of the list.
-  Future<void> onLoadMore() async {
+  /// Callback when the user scrolls to the bottom of the list.
+  Future<void> _onLoadMore() async {
     _customController.setLoading();
     await widget.onLoadMore?.call();
   }
 
-  /// [onRefresh] is called when the user pulls down the list.
-  Future<void> onRefresh() async {
+  /// Called when the user pulls down the list.
+  Future<void> _onRefresh() async {
+    _logRefreshCalled();
     _customController.setRefreshing();
-    await widget.onRefresh?.call();
+    return await widget.onRefresh?.call();
   }
 
   @override
@@ -137,10 +139,7 @@ class _GammaSmartPaginationState extends State<GammaSmartPagination> {
 
   RefreshIndicator _buildDataWidget() {
     return RefreshIndicator(
-        onRefresh: () async {
-          _logRefreshCalled();
-          return widget.onRefresh?.call();
-        },
+        onRefresh: () async => _onRefresh(),
         child: SingleChildScrollView(
           controller: _scrollController,
           physics: const AlwaysScrollableScrollPhysics(),

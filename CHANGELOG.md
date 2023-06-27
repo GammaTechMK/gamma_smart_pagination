@@ -1,3 +1,8 @@
+## 1.0.1
+* Updated code docs
+* Internal / non-public facing method names updated
+* Updated README
+
 ## 1.0.0
 * Breaking changes:
   - `GammaSmartController` is now `GammaController`
