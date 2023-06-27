@@ -166,26 +166,33 @@ For a full example check out the [Example app](https://github.com/GammaTechMK/ga
 GammaSmartPagination(
   key: const Key('firstScreenInfinitePagination'),
   // Required (for status updates)
-  gammaController: GammaController(),
+  gammaSmartController: GammaController(),
   // Required (for triggering load more when scrolled to bottom)
-  scrollController: ScrollController,
-  // Future<void> Callback when user scrolls to the bottom of the list
-  onLoadMore: () => loadMore(),
+  scrollController: ScrollController(),
   // Future<void> Callback when pull to refresh is triggered
   onRefresh: () => refreshItems(),
+  // Future<void> Callback when user scrolls to the bottom of the list
+  onLoadMore: () => loadMore(),
   // Required
   itemCount: itemsList.length,
   // Required
-  itemBuilder: (context, index) => ListTile(
-    title: Text(itemsList[index]),
+  child: ListView.builder(
+    shrinkWrap: true,
+    physics: const NeverScrollableScrollPhysics(),
+    itemCount: itemsList.length,
+    itemBuilder: (context, index) {
+      return ListTile(
+        title: Text(itemsList[index]),
+      );
+    }
   ),
   noInitialDataWidget: Text('No data loaded'),
   noMoreDataWidget: Text('No more data to load'),
   loadingFailedWidget: Text('Failed to load more items...'),
   refreshFailedWidget: Text('Failed to refresh data...'),
   loadingIndicator: CircularProgressIndicator.adaptive(),
-  // Divider for the list items
-  // if omitted the list is rendered without separator
-  separator: const Divider(),
+  // Set to true if you need to have logs in console
+  // when loadMore or onRefresh are called
+  enableLogging: false,
 )
 ```
