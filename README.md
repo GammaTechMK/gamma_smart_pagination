@@ -3,10 +3,8 @@ Flutter package for implementing infinite scroll pagination, with support for pu
 
 
 [![pub package][pub_badge]][pub_badge_link]
-[![pubscore](https://img.shields.io/badge/pubscore-140%2F140-brightgreen)][pub_badge_link]
+[![pubscore][pubscore_badge]][pubscore_link]
 [![License: MIT][license_badge]][license_badge_link]
-<!-- [![popularity](https://img.shields.io/pub/popularity/gamma_smart_pagination?logo=dart)](https://pub.dev/packages/gamma_smart_pagination/score)
-[![likes](https://img.shields.io/pub/likes/gamma_smart_pagination?logo=dart)](https://pub.dev/packages/gamma_smart_pagination/score) -->
 
 
 ---
@@ -223,3 +221,7 @@ GammaSmartPagination(
 [license_badge_link]: https://opensource.org/licenses/MIT
 [pub_badge]: https://img.shields.io/pub/v/gamma_smart_pagination.svg
 [pub_badge_link]: https://pub.dartlang.org/packages/gamma_smart_pagination
+[pubscore_badge]: https://img.shields.io/badge/pubscore-140%2F140-brightgreen
+[pubscore_link]: https://pub.dev/packages/gamma_smart_pagination/score
+[pubpopularity_badge]: https://img.shields.io/pub/likes/gamma_smart_pagination?logo=dart
+[publikes_badge]: https://img.shields.io/pub/likes/gamma_smart_pagination?logo=dart
