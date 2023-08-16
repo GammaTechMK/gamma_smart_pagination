@@ -1,3 +1,8 @@
+## 1.0.5
+* Added `header` optional Widget parameter to GammaSmartPagination widget.
+* Refactors
+* Updated README
+
 ## 1.0.4
 * Added GridView example (currently it supports only vertical scrolling GridView)
 * Updated positioning and alignment of Controller Status indicators in header and footer
