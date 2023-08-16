@@ -6,14 +6,15 @@ void main() {
   runApp(
     ProviderScope(
       child: MaterialApp(
-          title: 'GammaSmartPagination demo',
-          theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(
-              seedColor: Colors.orange,
-            ),
-            useMaterial3: true,
+        title: 'GammaSmartPagination demo',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.orange,
           ),
-          home: const ExampleLandingScreen()),
+          useMaterial3: true,
+        ),
+        home: const ExampleLandingScreen(),
+      ),
     ),
   );
 }

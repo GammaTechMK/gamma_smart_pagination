@@ -71,13 +71,18 @@ class _SecondScreenState extends ConsumerState<SecondScreen> {
             onRefresh: () => viewmodel.refreshItems(),
             onLoadMore: () => viewmodel.loadMoreItems(),
             itemCount: state.itemsList.length,
+            header: Container(
+              height: 300,
+              color: Colors.orange,
+            ),
             child: ListView.separated(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (context, index) => Dismissible(
                 key: Key('${state.itemsList[index]}_smart_pagination_item_key'),
                 onDismissed: (direction) => viewmodel.removeItem(index),
-                confirmDismiss: (direction) => showConfirmDismissDialog(context),
+                confirmDismiss: (direction) =>
+                    showConfirmDismissDialog(context),
                 direction: DismissDirection.endToStart,
                 background: Container(
                   color: Colors.red,

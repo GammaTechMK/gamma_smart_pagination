@@ -24,6 +24,9 @@ class GammaSmartPagination extends StatefulWidget {
   /// Number of items in the list.
   final int itemCount;
 
+  /// Widget that will be displayed above the list (header)
+  final Widget? header;
+
   /// Widget that will be displayed when the list is empty.
   final Widget? noInitialDataWidget;
 
@@ -62,6 +65,7 @@ class GammaSmartPagination extends StatefulWidget {
     required this.itemCount,
     this.onRefresh,
     this.onLoadMore,
+    this.header,
     this.noMoreDataWidget,
     this.loadingFailedWidget,
     this.refreshFailedWidget,
@@ -110,7 +114,8 @@ class _GammaSmartPaginationState extends State<GammaSmartPagination> {
   void _onBottomReached() {
     final maxScroll = _scrollController.position.maxScrollExtent;
     final currentScroll = _scrollController.position.pixels;
-    final sensitivityFactor = widget.scrollSensitivityTrigger ?? _defaultSensitivityFactor;
+    final sensitivityFactor =
+        widget.scrollSensitivityTrigger ?? _defaultSensitivityFactor;
 
     // If the user has scrolled to the bottom of the list, then call the onLoadMore callback.
     // Additionaly checks the current GammaController status to prevent multiple calls.
@@ -126,6 +131,9 @@ class _GammaSmartPaginationState extends State<GammaSmartPagination> {
   Future<void> _onLoadMore() async {
     _customController.setLoading();
     await widget.onLoadMore?.call();
+    if (_customController.status == const GammaControllerStatus.loading()) {
+      _customController.setLoadingCompleted();
+    }
   }
 
   /// Called when the user pulls down the list.
@@ -140,7 +148,7 @@ class _GammaSmartPaginationState extends State<GammaSmartPagination> {
     return ListenableBuilder(
       listenable: _customController,
       builder: (context, child) {
-        return widget.itemCount == 0 ? _buildNoInitialDataWidget() : _buildDataWidget();
+        return _buildDataWidget();
       },
     );
   }
@@ -153,7 +161,10 @@ class _GammaSmartPaginationState extends State<GammaSmartPagination> {
           physics: const AlwaysScrollableScrollPhysics(),
           child: Column(
             children: [
-              widget.itemCount == 0 ? _buildNoInitialDataWidget() : widget.child,
+              _buildHeader(),
+              widget.itemCount == 0
+                  ? _buildNoInitialDataWidget()
+                  : widget.child,
               _buildFooter(),
             ],
           ),
@@ -161,13 +172,20 @@ class _GammaSmartPaginationState extends State<GammaSmartPagination> {
   }
 
   Widget _buildNoInitialDataWidget() {
-    return Center(
-      child: widget.noInitialDataWidget ??
-          Text(
-            'No data to show',
-            style: wipedGrayTextColorStyle,
-          ),
+    return SizedBox(
+      height: 100,
+      child: Center(
+        child: widget.noInitialDataWidget ??
+            Text(
+              'No data to show',
+              style: wipedGrayTextColorStyle,
+            ),
+      ),
     );
+  }
+
+  Widget _buildHeader() {
+    return widget.header ?? const SizedBox.shrink();
   }
 
   Widget _buildFooter() {
@@ -177,7 +195,8 @@ class _GammaSmartPaginationState extends State<GammaSmartPagination> {
             SizedBox(
               height: 60.0,
               child: Center(
-                child: widget.loadingIndicator ?? const CircularProgressIndicator.adaptive(),
+                child: widget.loadingIndicator ??
+                    const CircularProgressIndicator.adaptive(),
               ),
             );
       },

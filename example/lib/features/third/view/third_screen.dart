@@ -38,7 +38,9 @@ class _ThirdScreenState extends ConsumerState<ThirdScreen> {
         ),
       ),
       body: SafeArea(
-        child: state.isLoading ? _buildLoadingIndicator() : _buildBody(context, state),
+        child: state.isLoading
+            ? _buildLoadingIndicator()
+            : _buildBody(context, state),
       ),
     );
   }
@@ -61,6 +63,10 @@ class _ThirdScreenState extends ConsumerState<ThirdScreen> {
             gammaSmartController: GammaController(),
             scrollController: ScrollController(),
             itemCount: state.itemsList.length,
+            header: Container(
+              height: 300,
+              color: Colors.orange,
+            ),
             child: ListView.separated(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
@@ -74,8 +80,8 @@ class _ThirdScreenState extends ConsumerState<ThirdScreen> {
         ),
         ElevatedButton(
           onPressed: () {
-            Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => const GridViewExample()));
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const GridViewExample()));
           },
           child: const Text('GridView example'),
         ),
