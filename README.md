@@ -102,6 +102,10 @@ class _ExampleAppState extends State<ExampleApp> {
             onLoadMore: () => loadMore(),
             onRefresh: () => refreshItems(),
             itemCount: itemsList.length,
+            header: Container(
+              height: 300.0,
+              color: Colors.orange,
+            ),
             child: ListView.separated(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
@@ -205,6 +209,11 @@ GammaSmartPagination(
         title: Text(itemsList[index]),
       );
     }
+  ),
+  // This is an optional header widget
+  header: Container(
+    height: 300.0,
+    color: Colors.orange,
   ),
   noInitialDataWidget: Text('No data loaded'),
   noMoreDataWidget: Text('No more data to load'),
