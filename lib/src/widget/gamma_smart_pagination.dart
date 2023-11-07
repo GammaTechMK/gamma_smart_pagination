@@ -172,11 +172,10 @@ class _GammaSmartPaginationState extends State<GammaSmartPagination> {
   }
 
   Widget _buildNoInitialDataWidget() {
-    return SizedBox(
+    return widget.noInitialDataWidget ?? SizedBox(
       height: 100,
       child: Center(
-        child: widget.noInitialDataWidget ??
-            Text(
+        child: Text(
               'No data to show',
               style: wipedGrayTextColorStyle,
             ),

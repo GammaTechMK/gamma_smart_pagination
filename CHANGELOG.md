@@ -1,3 +1,7 @@
+## 1.0.6
+* bump versions
+* fix no initial data widget issue
+ 
 ## 1.0.5
 * Added `header` optional Widget parameter to GammaSmartPagination widget.
 * Refactors
