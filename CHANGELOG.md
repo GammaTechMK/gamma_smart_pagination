@@ -1,3 +1,7 @@
+## 1.0.7
+* bump versions
+* fix no initial data widget issue due to restricted height
+
 ## 1.0.6
 * bump versions
 * fix no initial data widget issue
