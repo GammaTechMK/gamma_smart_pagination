@@ -31,7 +31,7 @@ class _SecondScreenState extends ConsumerState<SecondScreen> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text(
-          'No more to load status',
+          'Infinity scroll [shrinkwrap]',
           style: TextStyle(
             fontSize: 16.0,
             fontWeight: FontWeight.bold,
@@ -66,7 +66,7 @@ class _SecondScreenState extends ConsumerState<SecondScreen> {
       children: <Widget>[
         Expanded(
           child: GammaSmartPagination(
-            gammaSmartController: state.hrAppRefreshController,
+            gammaSmartController: state.gammaController,
             scrollController: state.scrollController,
             onRefresh: () => viewmodel.refreshItems(),
             onLoadMore: () => viewmodel.loadMoreItems(),

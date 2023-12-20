@@ -7,7 +7,7 @@ part 'third_screen_state.freezed.dart';
 @freezed
 class ThirdScreenState with _$ThirdScreenState {
   const factory ThirdScreenState({
-    required GammaController hrAppRefreshController,
+    required GammaController gammaController,
     required ScrollController scrollController,
     @Default(false) bool isLoading,
     @Default([]) List<String> itemsList,

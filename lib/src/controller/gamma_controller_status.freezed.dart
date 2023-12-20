@@ -113,25 +113,25 @@ class _$GammaControllerStatusCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$GammaIdleCopyWith<$Res> {
-  factory _$$GammaIdleCopyWith(
-          _$GammaIdle value, $Res Function(_$GammaIdle) then) =
-      __$$GammaIdleCopyWithImpl<$Res>;
+abstract class _$$GammaIdleImplCopyWith<$Res> {
+  factory _$$GammaIdleImplCopyWith(
+          _$GammaIdleImpl value, $Res Function(_$GammaIdleImpl) then) =
+      __$$GammaIdleImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$GammaIdleCopyWithImpl<$Res>
-    extends _$GammaControllerStatusCopyWithImpl<$Res, _$GammaIdle>
-    implements _$$GammaIdleCopyWith<$Res> {
-  __$$GammaIdleCopyWithImpl(
-      _$GammaIdle _value, $Res Function(_$GammaIdle) _then)
+class __$$GammaIdleImplCopyWithImpl<$Res>
+    extends _$GammaControllerStatusCopyWithImpl<$Res, _$GammaIdleImpl>
+    implements _$$GammaIdleImplCopyWith<$Res> {
+  __$$GammaIdleImplCopyWithImpl(
+      _$GammaIdleImpl _value, $Res Function(_$GammaIdleImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$GammaIdle extends GammaIdle {
-  const _$GammaIdle() : super._();
+class _$GammaIdleImpl extends GammaIdle {
+  const _$GammaIdleImpl() : super._();
 
   @override
   String toString() {
@@ -139,9 +139,9 @@ class _$GammaIdle extends GammaIdle {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GammaIdle);
+        (other.runtimeType == runtimeType && other is _$GammaIdleImpl);
   }
 
   @override
@@ -248,30 +248,30 @@ class _$GammaIdle extends GammaIdle {
 }
 
 abstract class GammaIdle extends GammaControllerStatus {
-  const factory GammaIdle() = _$GammaIdle;
+  const factory GammaIdle() = _$GammaIdleImpl;
   const GammaIdle._() : super._();
 }
 
 /// @nodoc
-abstract class _$$GammaRefreshingCopyWith<$Res> {
-  factory _$$GammaRefreshingCopyWith(
-          _$GammaRefreshing value, $Res Function(_$GammaRefreshing) then) =
-      __$$GammaRefreshingCopyWithImpl<$Res>;
+abstract class _$$GammaRefreshingImplCopyWith<$Res> {
+  factory _$$GammaRefreshingImplCopyWith(_$GammaRefreshingImpl value,
+          $Res Function(_$GammaRefreshingImpl) then) =
+      __$$GammaRefreshingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$GammaRefreshingCopyWithImpl<$Res>
-    extends _$GammaControllerStatusCopyWithImpl<$Res, _$GammaRefreshing>
-    implements _$$GammaRefreshingCopyWith<$Res> {
-  __$$GammaRefreshingCopyWithImpl(
-      _$GammaRefreshing _value, $Res Function(_$GammaRefreshing) _then)
+class __$$GammaRefreshingImplCopyWithImpl<$Res>
+    extends _$GammaControllerStatusCopyWithImpl<$Res, _$GammaRefreshingImpl>
+    implements _$$GammaRefreshingImplCopyWith<$Res> {
+  __$$GammaRefreshingImplCopyWithImpl(
+      _$GammaRefreshingImpl _value, $Res Function(_$GammaRefreshingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$GammaRefreshing extends GammaRefreshing {
-  const _$GammaRefreshing() : super._();
+class _$GammaRefreshingImpl extends GammaRefreshing {
+  const _$GammaRefreshingImpl() : super._();
 
   @override
   String toString() {
@@ -279,9 +279,9 @@ class _$GammaRefreshing extends GammaRefreshing {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GammaRefreshing);
+        (other.runtimeType == runtimeType && other is _$GammaRefreshingImpl);
   }
 
   @override
@@ -388,31 +388,33 @@ class _$GammaRefreshing extends GammaRefreshing {
 }
 
 abstract class GammaRefreshing extends GammaControllerStatus {
-  const factory GammaRefreshing() = _$GammaRefreshing;
+  const factory GammaRefreshing() = _$GammaRefreshingImpl;
   const GammaRefreshing._() : super._();
 }
 
 /// @nodoc
-abstract class _$$GammaRefreshingCompletedCopyWith<$Res> {
-  factory _$$GammaRefreshingCompletedCopyWith(_$GammaRefreshingCompleted value,
-          $Res Function(_$GammaRefreshingCompleted) then) =
-      __$$GammaRefreshingCompletedCopyWithImpl<$Res>;
+abstract class _$$GammaRefreshingCompletedImplCopyWith<$Res> {
+  factory _$$GammaRefreshingCompletedImplCopyWith(
+          _$GammaRefreshingCompletedImpl value,
+          $Res Function(_$GammaRefreshingCompletedImpl) then) =
+      __$$GammaRefreshingCompletedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$GammaRefreshingCompletedCopyWithImpl<$Res>
+class __$$GammaRefreshingCompletedImplCopyWithImpl<$Res>
     extends _$GammaControllerStatusCopyWithImpl<$Res,
-        _$GammaRefreshingCompleted>
-    implements _$$GammaRefreshingCompletedCopyWith<$Res> {
-  __$$GammaRefreshingCompletedCopyWithImpl(_$GammaRefreshingCompleted _value,
-      $Res Function(_$GammaRefreshingCompleted) _then)
+        _$GammaRefreshingCompletedImpl>
+    implements _$$GammaRefreshingCompletedImplCopyWith<$Res> {
+  __$$GammaRefreshingCompletedImplCopyWithImpl(
+      _$GammaRefreshingCompletedImpl _value,
+      $Res Function(_$GammaRefreshingCompletedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$GammaRefreshingCompleted extends GammaRefreshingCompleted {
-  const _$GammaRefreshingCompleted() : super._();
+class _$GammaRefreshingCompletedImpl extends GammaRefreshingCompleted {
+  const _$GammaRefreshingCompletedImpl() : super._();
 
   @override
   String toString() {
@@ -420,10 +422,10 @@ class _$GammaRefreshingCompleted extends GammaRefreshingCompleted {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GammaRefreshingCompleted);
+            other is _$GammaRefreshingCompletedImpl);
   }
 
   @override
@@ -530,30 +532,32 @@ class _$GammaRefreshingCompleted extends GammaRefreshingCompleted {
 }
 
 abstract class GammaRefreshingCompleted extends GammaControllerStatus {
-  const factory GammaRefreshingCompleted() = _$GammaRefreshingCompleted;
+  const factory GammaRefreshingCompleted() = _$GammaRefreshingCompletedImpl;
   const GammaRefreshingCompleted._() : super._();
 }
 
 /// @nodoc
-abstract class _$$GammaRefreshingFailedCopyWith<$Res> {
-  factory _$$GammaRefreshingFailedCopyWith(_$GammaRefreshingFailed value,
-          $Res Function(_$GammaRefreshingFailed) then) =
-      __$$GammaRefreshingFailedCopyWithImpl<$Res>;
+abstract class _$$GammaRefreshingFailedImplCopyWith<$Res> {
+  factory _$$GammaRefreshingFailedImplCopyWith(
+          _$GammaRefreshingFailedImpl value,
+          $Res Function(_$GammaRefreshingFailedImpl) then) =
+      __$$GammaRefreshingFailedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$GammaRefreshingFailedCopyWithImpl<$Res>
-    extends _$GammaControllerStatusCopyWithImpl<$Res, _$GammaRefreshingFailed>
-    implements _$$GammaRefreshingFailedCopyWith<$Res> {
-  __$$GammaRefreshingFailedCopyWithImpl(_$GammaRefreshingFailed _value,
-      $Res Function(_$GammaRefreshingFailed) _then)
+class __$$GammaRefreshingFailedImplCopyWithImpl<$Res>
+    extends _$GammaControllerStatusCopyWithImpl<$Res,
+        _$GammaRefreshingFailedImpl>
+    implements _$$GammaRefreshingFailedImplCopyWith<$Res> {
+  __$$GammaRefreshingFailedImplCopyWithImpl(_$GammaRefreshingFailedImpl _value,
+      $Res Function(_$GammaRefreshingFailedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$GammaRefreshingFailed extends GammaRefreshingFailed {
-  const _$GammaRefreshingFailed() : super._();
+class _$GammaRefreshingFailedImpl extends GammaRefreshingFailed {
+  const _$GammaRefreshingFailedImpl() : super._();
 
   @override
   String toString() {
@@ -561,9 +565,10 @@ class _$GammaRefreshingFailed extends GammaRefreshingFailed {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GammaRefreshingFailed);
+        (other.runtimeType == runtimeType &&
+            other is _$GammaRefreshingFailedImpl);
   }
 
   @override
@@ -670,30 +675,30 @@ class _$GammaRefreshingFailed extends GammaRefreshingFailed {
 }
 
 abstract class GammaRefreshingFailed extends GammaControllerStatus {
-  const factory GammaRefreshingFailed() = _$GammaRefreshingFailed;
+  const factory GammaRefreshingFailed() = _$GammaRefreshingFailedImpl;
   const GammaRefreshingFailed._() : super._();
 }
 
 /// @nodoc
-abstract class _$$GammaLoadingCopyWith<$Res> {
-  factory _$$GammaLoadingCopyWith(
-          _$GammaLoading value, $Res Function(_$GammaLoading) then) =
-      __$$GammaLoadingCopyWithImpl<$Res>;
+abstract class _$$GammaLoadingImplCopyWith<$Res> {
+  factory _$$GammaLoadingImplCopyWith(
+          _$GammaLoadingImpl value, $Res Function(_$GammaLoadingImpl) then) =
+      __$$GammaLoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$GammaLoadingCopyWithImpl<$Res>
-    extends _$GammaControllerStatusCopyWithImpl<$Res, _$GammaLoading>
-    implements _$$GammaLoadingCopyWith<$Res> {
-  __$$GammaLoadingCopyWithImpl(
-      _$GammaLoading _value, $Res Function(_$GammaLoading) _then)
+class __$$GammaLoadingImplCopyWithImpl<$Res>
+    extends _$GammaControllerStatusCopyWithImpl<$Res, _$GammaLoadingImpl>
+    implements _$$GammaLoadingImplCopyWith<$Res> {
+  __$$GammaLoadingImplCopyWithImpl(
+      _$GammaLoadingImpl _value, $Res Function(_$GammaLoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$GammaLoading extends GammaLoading {
-  const _$GammaLoading() : super._();
+class _$GammaLoadingImpl extends GammaLoading {
+  const _$GammaLoadingImpl() : super._();
 
   @override
   String toString() {
@@ -701,9 +706,9 @@ class _$GammaLoading extends GammaLoading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GammaLoading);
+        (other.runtimeType == runtimeType && other is _$GammaLoadingImpl);
   }
 
   @override
@@ -810,30 +815,32 @@ class _$GammaLoading extends GammaLoading {
 }
 
 abstract class GammaLoading extends GammaControllerStatus {
-  const factory GammaLoading() = _$GammaLoading;
+  const factory GammaLoading() = _$GammaLoadingImpl;
   const GammaLoading._() : super._();
 }
 
 /// @nodoc
-abstract class _$$GammaLoadingCompletedCopyWith<$Res> {
-  factory _$$GammaLoadingCompletedCopyWith(_$GammaLoadingCompleted value,
-          $Res Function(_$GammaLoadingCompleted) then) =
-      __$$GammaLoadingCompletedCopyWithImpl<$Res>;
+abstract class _$$GammaLoadingCompletedImplCopyWith<$Res> {
+  factory _$$GammaLoadingCompletedImplCopyWith(
+          _$GammaLoadingCompletedImpl value,
+          $Res Function(_$GammaLoadingCompletedImpl) then) =
+      __$$GammaLoadingCompletedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$GammaLoadingCompletedCopyWithImpl<$Res>
-    extends _$GammaControllerStatusCopyWithImpl<$Res, _$GammaLoadingCompleted>
-    implements _$$GammaLoadingCompletedCopyWith<$Res> {
-  __$$GammaLoadingCompletedCopyWithImpl(_$GammaLoadingCompleted _value,
-      $Res Function(_$GammaLoadingCompleted) _then)
+class __$$GammaLoadingCompletedImplCopyWithImpl<$Res>
+    extends _$GammaControllerStatusCopyWithImpl<$Res,
+        _$GammaLoadingCompletedImpl>
+    implements _$$GammaLoadingCompletedImplCopyWith<$Res> {
+  __$$GammaLoadingCompletedImplCopyWithImpl(_$GammaLoadingCompletedImpl _value,
+      $Res Function(_$GammaLoadingCompletedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$GammaLoadingCompleted extends GammaLoadingCompleted {
-  const _$GammaLoadingCompleted() : super._();
+class _$GammaLoadingCompletedImpl extends GammaLoadingCompleted {
+  const _$GammaLoadingCompletedImpl() : super._();
 
   @override
   String toString() {
@@ -841,9 +848,10 @@ class _$GammaLoadingCompleted extends GammaLoadingCompleted {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GammaLoadingCompleted);
+        (other.runtimeType == runtimeType &&
+            other is _$GammaLoadingCompletedImpl);
   }
 
   @override
@@ -950,25 +958,25 @@ class _$GammaLoadingCompleted extends GammaLoadingCompleted {
 }
 
 abstract class GammaLoadingCompleted extends GammaControllerStatus {
-  const factory GammaLoadingCompleted() = _$GammaLoadingCompleted;
+  const factory GammaLoadingCompleted() = _$GammaLoadingCompletedImpl;
   const GammaLoadingCompleted._() : super._();
 }
 
 /// @nodoc
-abstract class _$$GammaLoadingFailedCopyWith<$Res> {
-  factory _$$GammaLoadingFailedCopyWith(_$GammaLoadingFailed value,
-          $Res Function(_$GammaLoadingFailed) then) =
-      __$$GammaLoadingFailedCopyWithImpl<$Res>;
+abstract class _$$GammaLoadingFailedImplCopyWith<$Res> {
+  factory _$$GammaLoadingFailedImplCopyWith(_$GammaLoadingFailedImpl value,
+          $Res Function(_$GammaLoadingFailedImpl) then) =
+      __$$GammaLoadingFailedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String? errorMessage});
 }
 
 /// @nodoc
-class __$$GammaLoadingFailedCopyWithImpl<$Res>
-    extends _$GammaControllerStatusCopyWithImpl<$Res, _$GammaLoadingFailed>
-    implements _$$GammaLoadingFailedCopyWith<$Res> {
-  __$$GammaLoadingFailedCopyWithImpl(
-      _$GammaLoadingFailed _value, $Res Function(_$GammaLoadingFailed) _then)
+class __$$GammaLoadingFailedImplCopyWithImpl<$Res>
+    extends _$GammaControllerStatusCopyWithImpl<$Res, _$GammaLoadingFailedImpl>
+    implements _$$GammaLoadingFailedImplCopyWith<$Res> {
+  __$$GammaLoadingFailedImplCopyWithImpl(_$GammaLoadingFailedImpl _value,
+      $Res Function(_$GammaLoadingFailedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -976,7 +984,7 @@ class __$$GammaLoadingFailedCopyWithImpl<$Res>
   $Res call({
     Object? errorMessage = freezed,
   }) {
-    return _then(_$GammaLoadingFailed(
+    return _then(_$GammaLoadingFailedImpl(
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -987,8 +995,8 @@ class __$$GammaLoadingFailedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GammaLoadingFailed extends GammaLoadingFailed {
-  const _$GammaLoadingFailed({this.errorMessage}) : super._();
+class _$GammaLoadingFailedImpl extends GammaLoadingFailed {
+  const _$GammaLoadingFailedImpl({this.errorMessage}) : super._();
 
   @override
   final String? errorMessage;
@@ -999,10 +1007,10 @@ class _$GammaLoadingFailed extends GammaLoadingFailed {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GammaLoadingFailed &&
+            other is _$GammaLoadingFailedImpl &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage));
   }
@@ -1013,8 +1021,8 @@ class _$GammaLoadingFailed extends GammaLoadingFailed {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$GammaLoadingFailedCopyWith<_$GammaLoadingFailed> get copyWith =>
-      __$$GammaLoadingFailedCopyWithImpl<_$GammaLoadingFailed>(
+  _$$GammaLoadingFailedImplCopyWith<_$GammaLoadingFailedImpl> get copyWith =>
+      __$$GammaLoadingFailedImplCopyWithImpl<_$GammaLoadingFailedImpl>(
           this, _$identity);
 
   @override
@@ -1119,35 +1127,35 @@ class _$GammaLoadingFailed extends GammaLoadingFailed {
 
 abstract class GammaLoadingFailed extends GammaControllerStatus {
   const factory GammaLoadingFailed({final String? errorMessage}) =
-      _$GammaLoadingFailed;
+      _$GammaLoadingFailedImpl;
   const GammaLoadingFailed._() : super._();
 
   String? get errorMessage;
   @JsonKey(ignore: true)
-  _$$GammaLoadingFailedCopyWith<_$GammaLoadingFailed> get copyWith =>
+  _$$GammaLoadingFailedImplCopyWith<_$GammaLoadingFailedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$GammaNoMoreDataCopyWith<$Res> {
-  factory _$$GammaNoMoreDataCopyWith(
-          _$GammaNoMoreData value, $Res Function(_$GammaNoMoreData) then) =
-      __$$GammaNoMoreDataCopyWithImpl<$Res>;
+abstract class _$$GammaNoMoreDataImplCopyWith<$Res> {
+  factory _$$GammaNoMoreDataImplCopyWith(_$GammaNoMoreDataImpl value,
+          $Res Function(_$GammaNoMoreDataImpl) then) =
+      __$$GammaNoMoreDataImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$GammaNoMoreDataCopyWithImpl<$Res>
-    extends _$GammaControllerStatusCopyWithImpl<$Res, _$GammaNoMoreData>
-    implements _$$GammaNoMoreDataCopyWith<$Res> {
-  __$$GammaNoMoreDataCopyWithImpl(
-      _$GammaNoMoreData _value, $Res Function(_$GammaNoMoreData) _then)
+class __$$GammaNoMoreDataImplCopyWithImpl<$Res>
+    extends _$GammaControllerStatusCopyWithImpl<$Res, _$GammaNoMoreDataImpl>
+    implements _$$GammaNoMoreDataImplCopyWith<$Res> {
+  __$$GammaNoMoreDataImplCopyWithImpl(
+      _$GammaNoMoreDataImpl _value, $Res Function(_$GammaNoMoreDataImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$GammaNoMoreData extends GammaNoMoreData {
-  const _$GammaNoMoreData() : super._();
+class _$GammaNoMoreDataImpl extends GammaNoMoreData {
+  const _$GammaNoMoreDataImpl() : super._();
 
   @override
   String toString() {
@@ -1155,9 +1163,9 @@ class _$GammaNoMoreData extends GammaNoMoreData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GammaNoMoreData);
+        (other.runtimeType == runtimeType && other is _$GammaNoMoreDataImpl);
   }
 
   @override
@@ -1264,6 +1272,6 @@ class _$GammaNoMoreData extends GammaNoMoreData {
 }
 
 abstract class GammaNoMoreData extends GammaControllerStatus {
-  const factory GammaNoMoreData() = _$GammaNoMoreData;
+  const factory GammaNoMoreData() = _$GammaNoMoreDataImpl;
   const GammaNoMoreData._() : super._();
 }

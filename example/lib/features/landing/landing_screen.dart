@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:smart_pagination_example/features/infinite_images/view/infinite_images_view.dart';
+import 'package:smart_pagination_example/features/infinite_images_old/view/infinite_images_old_view.dart';
 import 'package:smart_pagination_example/features/second/view/second_screen.dart';
 import 'package:smart_pagination_example/features/third/view/third_screen.dart';
 
@@ -24,15 +26,7 @@ class ExampleLandingScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               ElevatedButton(
-                child: const Text('Infinite scroll'),
-                onPressed: () => Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const FirstScreen(),
-                  ),
-                ),
-              ),
-              ElevatedButton(
-                child: const Text('Infinite scroll with no more data to load'),
+                child: const Text('Infinite scroll [shrinkwrap]'),
                 onPressed: () => Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) => const SecondScreen(),
@@ -48,10 +42,42 @@ class ExampleLandingScreen extends StatelessWidget {
                 ),
               ),
               ElevatedButton(
-                child: const Text('GridView example'),
+                child: const Text('GridView example [shrinkwrap]'),
                 onPressed: () => Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) => const GridViewExample(),
+                  ),
+                ),
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.green,
+                  foregroundColor: Colors.white,
+                ),
+                onPressed: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const FirstScreen(),
+                  ),
+                ),
+                child: const Text('Performant Infinite scroll'),
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.green,
+                  foregroundColor: Colors.white,
+                ),
+                onPressed: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const InfiniteImagesView(),
+                  ),
+                ),
+                child: const Text('Performant Infinite IMAGES list'),
+              ),
+              ElevatedButton(
+                child: const Text('Infinite Images list [shrinkWrap]'),
+                onPressed: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const InfiniteImagesOldView(),
                   ),
                 ),
               ),

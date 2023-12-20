@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ThirdScreenState {
-  GammaController get hrAppRefreshController => throw _privateConstructorUsedError;
+  GammaController get gammaController => throw _privateConstructorUsedError;
   ScrollController get scrollController => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   List<String> get itemsList => throw _privateConstructorUsedError;
@@ -24,16 +24,18 @@ mixin _$ThirdScreenState {
   int get perPage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ThirdScreenStateCopyWith<ThirdScreenState> get copyWith => throw _privateConstructorUsedError;
+  $ThirdScreenStateCopyWith<ThirdScreenState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ThirdScreenStateCopyWith<$Res> {
-  factory $ThirdScreenStateCopyWith(ThirdScreenState value, $Res Function(ThirdScreenState) then) =
+  factory $ThirdScreenStateCopyWith(
+          ThirdScreenState value, $Res Function(ThirdScreenState) then) =
       _$ThirdScreenStateCopyWithImpl<$Res, ThirdScreenState>;
   @useResult
   $Res call(
-      {GammaController hrAppRefreshController,
+      {GammaController gammaController,
       ScrollController scrollController,
       bool isLoading,
       List<String> itemsList,
@@ -54,7 +56,7 @@ class _$ThirdScreenStateCopyWithImpl<$Res, $Val extends ThirdScreenState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? hrAppRefreshController = null,
+    Object? gammaController = null,
     Object? scrollController = null,
     Object? isLoading = null,
     Object? itemsList = null,
@@ -62,9 +64,9 @@ class _$ThirdScreenStateCopyWithImpl<$Res, $Val extends ThirdScreenState>
     Object? perPage = null,
   }) {
     return _then(_value.copyWith(
-      hrAppRefreshController: null == hrAppRefreshController
-          ? _value.hrAppRefreshController
-          : hrAppRefreshController // ignore: cast_nullable_to_non_nullable
+      gammaController: null == gammaController
+          ? _value.gammaController
+          : gammaController // ignore: cast_nullable_to_non_nullable
               as GammaController,
       scrollController: null == scrollController
           ? _value.scrollController
@@ -91,14 +93,15 @@ class _$ThirdScreenStateCopyWithImpl<$Res, $Val extends ThirdScreenState>
 }
 
 /// @nodoc
-abstract class _$$_ThirdScreenStateCopyWith<$Res> implements $ThirdScreenStateCopyWith<$Res> {
-  factory _$$_ThirdScreenStateCopyWith(
-          _$_ThirdScreenState value, $Res Function(_$_ThirdScreenState) then) =
-      __$$_ThirdScreenStateCopyWithImpl<$Res>;
+abstract class _$$ThirdScreenStateImplCopyWith<$Res>
+    implements $ThirdScreenStateCopyWith<$Res> {
+  factory _$$ThirdScreenStateImplCopyWith(_$ThirdScreenStateImpl value,
+          $Res Function(_$ThirdScreenStateImpl) then) =
+      __$$ThirdScreenStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {GammaController hrAppRefreshController,
+      {GammaController gammaController,
       ScrollController scrollController,
       bool isLoading,
       List<String> itemsList,
@@ -107,27 +110,27 @@ abstract class _$$_ThirdScreenStateCopyWith<$Res> implements $ThirdScreenStateCo
 }
 
 /// @nodoc
-class __$$_ThirdScreenStateCopyWithImpl<$Res>
-    extends _$ThirdScreenStateCopyWithImpl<$Res, _$_ThirdScreenState>
-    implements _$$_ThirdScreenStateCopyWith<$Res> {
-  __$$_ThirdScreenStateCopyWithImpl(
-      _$_ThirdScreenState _value, $Res Function(_$_ThirdScreenState) _then)
+class __$$ThirdScreenStateImplCopyWithImpl<$Res>
+    extends _$ThirdScreenStateCopyWithImpl<$Res, _$ThirdScreenStateImpl>
+    implements _$$ThirdScreenStateImplCopyWith<$Res> {
+  __$$ThirdScreenStateImplCopyWithImpl(_$ThirdScreenStateImpl _value,
+      $Res Function(_$ThirdScreenStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? hrAppRefreshController = null,
+    Object? gammaController = null,
     Object? scrollController = null,
     Object? isLoading = null,
     Object? itemsList = null,
     Object? hasNext = null,
     Object? perPage = null,
   }) {
-    return _then(_$_ThirdScreenState(
-      hrAppRefreshController: null == hrAppRefreshController
-          ? _value.hrAppRefreshController
-          : hrAppRefreshController // ignore: cast_nullable_to_non_nullable
+    return _then(_$ThirdScreenStateImpl(
+      gammaController: null == gammaController
+          ? _value.gammaController
+          : gammaController // ignore: cast_nullable_to_non_nullable
               as GammaController,
       scrollController: null == scrollController
           ? _value.scrollController
@@ -155,9 +158,9 @@ class __$$_ThirdScreenStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ThirdScreenState implements _ThirdScreenState {
-  const _$_ThirdScreenState(
-      {required this.hrAppRefreshController,
+class _$ThirdScreenStateImpl implements _ThirdScreenState {
+  const _$ThirdScreenStateImpl(
+      {required this.gammaController,
       required this.scrollController,
       this.isLoading = false,
       final List<String> itemsList = const [],
@@ -166,7 +169,7 @@ class _$_ThirdScreenState implements _ThirdScreenState {
       : _itemsList = itemsList;
 
   @override
-  final GammaController hrAppRefreshController;
+  final GammaController gammaController;
   @override
   final ScrollController scrollController;
   @override
@@ -190,46 +193,55 @@ class _$_ThirdScreenState implements _ThirdScreenState {
 
   @override
   String toString() {
-    return 'ThirdScreenState(hrAppRefreshController: $hrAppRefreshController, scrollController: $scrollController, isLoading: $isLoading, itemsList: $itemsList, hasNext: $hasNext, perPage: $perPage)';
+    return 'ThirdScreenState(gammaController: $gammaController, scrollController: $scrollController, isLoading: $isLoading, itemsList: $itemsList, hasNext: $hasNext, perPage: $perPage)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ThirdScreenState &&
-            (identical(other.hrAppRefreshController, hrAppRefreshController) ||
-                other.hrAppRefreshController == hrAppRefreshController) &&
+            other is _$ThirdScreenStateImpl &&
+            (identical(other.gammaController, gammaController) ||
+                other.gammaController == gammaController) &&
             (identical(other.scrollController, scrollController) ||
                 other.scrollController == scrollController) &&
-            (identical(other.isLoading, isLoading) || other.isLoading == isLoading) &&
-            const DeepCollectionEquality().equals(other._itemsList, _itemsList) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
+            const DeepCollectionEquality()
+                .equals(other._itemsList, _itemsList) &&
             (identical(other.hasNext, hasNext) || other.hasNext == hasNext) &&
             (identical(other.perPage, perPage) || other.perPage == perPage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, hrAppRefreshController, scrollController, isLoading,
-      const DeepCollectionEquality().hash(_itemsList), hasNext, perPage);
+  int get hashCode => Object.hash(
+      runtimeType,
+      gammaController,
+      scrollController,
+      isLoading,
+      const DeepCollectionEquality().hash(_itemsList),
+      hasNext,
+      perPage);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ThirdScreenStateCopyWith<_$_ThirdScreenState> get copyWith =>
-      __$$_ThirdScreenStateCopyWithImpl<_$_ThirdScreenState>(this, _$identity);
+  _$$ThirdScreenStateImplCopyWith<_$ThirdScreenStateImpl> get copyWith =>
+      __$$ThirdScreenStateImplCopyWithImpl<_$ThirdScreenStateImpl>(
+          this, _$identity);
 }
 
 abstract class _ThirdScreenState implements ThirdScreenState {
   const factory _ThirdScreenState(
-      {required final GammaController hrAppRefreshController,
+      {required final GammaController gammaController,
       required final ScrollController scrollController,
       final bool isLoading,
       final List<String> itemsList,
       final bool hasNext,
-      final int perPage}) = _$_ThirdScreenState;
+      final int perPage}) = _$ThirdScreenStateImpl;
 
   @override
-  GammaController get hrAppRefreshController;
+  GammaController get gammaController;
   @override
   ScrollController get scrollController;
   @override
@@ -242,6 +254,6 @@ abstract class _ThirdScreenState implements ThirdScreenState {
   int get perPage;
   @override
   @JsonKey(ignore: true)
-  _$$_ThirdScreenStateCopyWith<_$_ThirdScreenState> get copyWith =>
+  _$$ThirdScreenStateImplCopyWith<_$ThirdScreenStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

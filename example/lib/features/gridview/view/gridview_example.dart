@@ -19,7 +19,9 @@ class _GridViewExampleState extends State<GridViewExample> {
     final newList = List.generate(10, (index) => '${index + itemsList.length}');
     itemsList.addAll(newList);
     gammaController.setNoMoreData();
-    setState(() {});
+    if (mounted) {
+      setState(() {});
+    }
   }
 
   Future<void> onRefresh() async {

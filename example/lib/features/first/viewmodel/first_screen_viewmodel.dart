@@ -6,7 +6,8 @@ import '../../shared_services/items_service.dart';
 import '../state/first_screen_state.dart';
 
 final firstScreenViewmodelProvider =
-    StateNotifierProvider.autoDispose<FirstScreenViewmodel, FirstScreenState>((ref) {
+    StateNotifierProvider.autoDispose<FirstScreenViewmodel, FirstScreenState>(
+        (ref) {
   final itemsService = ref.watch(itemsServiceProvider);
   return FirstScreenViewmodel(
     itemsService: itemsService,
@@ -21,7 +22,7 @@ class FirstScreenViewmodel extends StateNotifier<FirstScreenState> {
     ScrollController? scrollController,
   }) : super(
           FirstScreenState(
-            hrAppRefreshController: hrAppRefreshController ?? GammaController(),
+            gammaController: hrAppRefreshController ?? GammaController(),
             scrollController: scrollController ?? ScrollController(),
           ),
         );
@@ -41,11 +42,11 @@ class FirstScreenViewmodel extends StateNotifier<FirstScreenState> {
 
   Future<void> loadMoreItems() async {
     if (!state.hasNext) {
-      state.hrAppRefreshController.setNoMoreData();
+      state.gammaController.setNoMoreData();
       return;
     }
 
-    state.hrAppRefreshController.setLoading();
+    state.gammaController.setLoading();
 
     final newItemsList = await itemsService.getItems(
       perPage: state.perPage,
@@ -57,11 +58,11 @@ class FirstScreenViewmodel extends StateNotifier<FirstScreenState> {
       hasNext: true,
     );
 
-    state.hrAppRefreshController.setIdle();
+    state.gammaController.setIdle();
   }
 
   Future<void> refreshItems() async {
-    state.hrAppRefreshController.setRefreshing();
+    state.gammaController.setRefreshing();
     final newItemsList = await itemsService.getItems(
       perPage: state.perPage,
       currentItemsLength: 0,
@@ -70,7 +71,7 @@ class FirstScreenViewmodel extends StateNotifier<FirstScreenState> {
       itemsList: newItemsList,
       hasNext: true,
     );
-    state.hrAppRefreshController.setIdle();
+    state.gammaController.setIdle();
   }
 
   void removeItem(int index) {

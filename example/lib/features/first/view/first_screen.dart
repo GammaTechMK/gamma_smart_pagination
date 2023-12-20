@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gamma_smart_pagination/gamma_smart_pagination.dart';
 
-import '../../second/view/second_screen.dart';
 import '../state/first_screen_state.dart';
 import '../viewmodel/first_screen_viewmodel.dart';
 
@@ -31,7 +30,7 @@ class _FirstScreenState extends ConsumerState<FirstScreen> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text(
-          'Infinite scroll',
+          'Infinite scroll (performant)',
           style: TextStyle(
             fontSize: 16.0,
             fontWeight: FontWeight.bold,
@@ -65,35 +64,22 @@ class _FirstScreenState extends ConsumerState<FirstScreen> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Expanded(
-          child: GammaSmartPagination(
-              enableLogging: true,
-              gammaSmartController: state.hrAppRefreshController,
-              scrollController: state.scrollController,
-              onRefresh: () => viewmodel.refreshItems(),
-              onLoadMore: () => viewmodel.loadMoreItems(),
-              itemCount: state.itemsList.length,
-              child: ListView.separated(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: state.itemsList.length,
-                itemBuilder: (context, index) {
-                  final item = state.itemsList[index];
-                  return ListTile(
-                    title: Text(item),
-                  );
-                },
-                separatorBuilder: (context, index) => const Divider(),
-              )),
-        ),
-        ElevatedButton(
-          onPressed: () => {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => const SecondScreen(),
-              ),
-            ),
-          },
-          child: const Text('Go to screen #2'),
+          child: GammaSmartPagination.performant(
+            gammaSmartController: state.gammaController,
+            scrollController: state.scrollController,
+            onRefresh: () => viewmodel.refreshItems(),
+            onLoadMore: () => viewmodel.loadMoreItems(),
+            itemCount: state.itemsList.length,
+            itemBuilder: (context, index) {
+              final item = state.itemsList[index];
+              return ListTile(
+                title: Text(item),
+              );
+            },
+            separatorBuilder: (context, index) {
+              return const Divider();
+            },
+          ),
         ),
       ],
     );

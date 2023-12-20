@@ -2,16 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:gamma_smart_pagination/gamma_smart_pagination.dart';
 
-part 'first_screen_state.freezed.dart';
+part 'infinite_images_old_state.freezed.dart';
 
 @freezed
-class FirstScreenState with _$FirstScreenState {
-  const factory FirstScreenState({
+class InfiniteImagesOldState with _$InfiniteImagesOldState {
+  const factory InfiniteImagesOldState({
     required GammaController gammaController,
     required ScrollController scrollController,
     @Default(false) bool isLoading,
-    @Default([]) List<String> itemsList,
-    @Default(false) bool hasNext,
-    @Default(10) int perPage,
-  }) = _FirstScreenState;
+    @Default([]) List<String> imagesList,
+  }) = _InfiniteImagesOldState;
 }

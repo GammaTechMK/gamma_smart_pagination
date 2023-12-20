@@ -6,7 +6,8 @@ import '../../shared_services/items_service.dart';
 import '../state/second_screen_state.dart';
 
 final secondScreenViewmodelProvider =
-    StateNotifierProvider.autoDispose<SecondScreenViewmodel, SecondScreenState>((ref) {
+    StateNotifierProvider.autoDispose<SecondScreenViewmodel, SecondScreenState>(
+        (ref) {
   final itemsService = ref.watch(itemsServiceProvider);
   return SecondScreenViewmodel(itemsService: itemsService);
 });
@@ -15,11 +16,11 @@ class SecondScreenViewmodel extends StateNotifier<SecondScreenState> {
   final ItemsService itemsService;
   SecondScreenViewmodel({
     required this.itemsService,
-    GammaController? hrAppRefreshController,
+    GammaController? gammaController,
     ScrollController? scrollController,
   }) : super(
           SecondScreenState(
-            hrAppRefreshController: hrAppRefreshController ?? GammaController(),
+            gammaController: gammaController ?? GammaController(),
             scrollController: scrollController ?? ScrollController(),
           ),
         );
@@ -39,11 +40,11 @@ class SecondScreenViewmodel extends StateNotifier<SecondScreenState> {
 
   Future<void> loadMoreItems() async {
     if (!state.hasNext) {
-      state.hrAppRefreshController.setNoMoreData();
+      state.gammaController.setNoMoreData();
       return;
     }
 
-    state.hrAppRefreshController.setLoading();
+    state.gammaController.setLoading();
 
     final newItemsList = await itemsService.getItems(
       perPage: state.perPage,
@@ -55,11 +56,11 @@ class SecondScreenViewmodel extends StateNotifier<SecondScreenState> {
       hasNext: false,
     );
 
-    state.hrAppRefreshController.setIdle();
+    state.gammaController.setIdle();
   }
 
   Future<void> refreshItems() async {
-    state.hrAppRefreshController.setRefreshing();
+    state.gammaController.setRefreshing();
     final newItemsList = await itemsService.getItems(
       perPage: state.perPage,
       currentItemsLength: 0,
@@ -68,7 +69,7 @@ class SecondScreenViewmodel extends StateNotifier<SecondScreenState> {
       itemsList: newItemsList,
       hasNext: true,
     );
-    state.hrAppRefreshController.setIdle();
+    state.gammaController.setIdle();
   }
 
   void removeItem(int index) {

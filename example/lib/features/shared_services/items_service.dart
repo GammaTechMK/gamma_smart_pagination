@@ -10,9 +10,10 @@ abstract class ItemsService {
 
 class ItemsServiceImpl implements ItemsService {
   @override
-  Future<List<String>> getItems({int perPage = 10, int currentItemsLength = 0}) async {
+  Future<List<String>> getItems(
+      {int perPage = 10, int currentItemsLength = 0}) async {
     // Simulate network request
-    await Future.delayed(const Duration(seconds: 1));
+    await Future.delayed(const Duration(seconds: 2));
     final List<String> newItemsList = List.generate(
       perPage,
       (index) => 'Item ${currentItemsLength + index + 1}',
