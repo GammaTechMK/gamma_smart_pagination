@@ -56,22 +56,20 @@ class _InfiniteImagesViewSOldtate extends ConsumerState<InfiniteImagesOldView> {
     InfiniteImagesOldState state,
     InfiniteImagesOldNotifier viewmodel,
   ) {
-    return Expanded(
-      child: GammaSmartPagination(
-        gammaSmartController: state.gammaController,
-        scrollController: state.scrollController,
-        onLoadMore: viewmodel.loadMore,
-        onRefresh: viewmodel.refreshImages,
+    return GammaSmartPagination(
+      gammaSmartController: state.gammaController,
+      scrollController: state.scrollController,
+      onLoadMore: viewmodel.loadMore,
+      onRefresh: viewmodel.refreshImages,
+      itemCount: state.imagesList.length,
+      child: ListView.builder(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
         itemCount: state.imagesList.length,
-        child: ListView.builder(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          itemCount: state.imagesList.length,
-          itemBuilder: (context, index) {
-            final imageUrl = state.imagesList[index];
-            return ImageTile(imageUrl: imageUrl);
-          },
-        ),
+        itemBuilder: (context, index) {
+          final imageUrl = state.imagesList[index];
+          return ImageTile(imageUrl: imageUrl);
+        },
       ),
     );
   }

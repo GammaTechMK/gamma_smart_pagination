@@ -81,4 +81,13 @@ class FirstScreenViewmodel extends StateNotifier<FirstScreenState> {
       itemsList: newItemsList,
     );
   }
+
+  @override
+  bool updateShouldNotify(FirstScreenState old, FirstScreenState current) {
+    if (mounted) {
+      return super.updateShouldNotify(old, current);
+    } else {
+      return false;
+    }
+  }
 }

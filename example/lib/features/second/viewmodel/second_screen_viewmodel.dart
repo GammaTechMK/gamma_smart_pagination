@@ -79,4 +79,13 @@ class SecondScreenViewmodel extends StateNotifier<SecondScreenState> {
       itemsList: newItemsList,
     );
   }
+
+  @override
+  bool updateShouldNotify(SecondScreenState old, SecondScreenState current) {
+    if (mounted) {
+      return super.updateShouldNotify(old, current);
+    } else {
+      return false;
+    }
+  }
 }

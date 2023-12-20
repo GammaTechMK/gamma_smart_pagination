@@ -58,4 +58,14 @@ class InfiniteImagesOldNotifier extends StateNotifier<InfiniteImagesOldState> {
       imagesList: result,
     );
   }
+
+  @override
+  bool updateShouldNotify(
+      InfiniteImagesOldState old, InfiniteImagesOldState current) {
+    if (mounted) {
+      return super.updateShouldNotify(old, current);
+    } else {
+      return false;
+    }
+  }
 }

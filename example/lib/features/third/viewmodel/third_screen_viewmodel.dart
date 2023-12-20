@@ -79,4 +79,13 @@ class ThirdScreenViewmodel extends StateNotifier<ThirdScreenState> {
       itemsList: newItemsList,
     );
   }
+
+  @override
+  bool updateShouldNotify(ThirdScreenState old, ThirdScreenState current) {
+    if (mounted) {
+      return super.updateShouldNotify(old, current);
+    } else {
+      return false;
+    }
+  }
 }
