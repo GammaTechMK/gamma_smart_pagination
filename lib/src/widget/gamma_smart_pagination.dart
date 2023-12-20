@@ -62,6 +62,8 @@ class GammaSmartPagination extends StatefulWidget {
   /// Enable logging when set to true.
   final bool enableLogging;
 
+  final double? itemExtent;
+
   /// Wrapper for scrollable widgets that enables
   /// pull to refresh and infinite scrolling pagination.
   ///
@@ -77,6 +79,7 @@ class GammaSmartPagination extends StatefulWidget {
     required this.gammaSmartController,
     required this.scrollController,
     required this.itemCount,
+    this.itemExtent,
     this.child,
     this.itemBuilder,
     this.separatorBuilder,
@@ -111,6 +114,7 @@ class GammaSmartPagination extends StatefulWidget {
     required Widget? Function(BuildContext context, int index) itemBuilder,
     Widget Function(BuildContext context, int index)? separatorBuilder,
     required int itemCount,
+    double? itemExtent,
     Widget? header,
     Future<void> Function()? onLoadMore,
     Future<void> Function()? onRefresh,
@@ -119,6 +123,7 @@ class GammaSmartPagination extends StatefulWidget {
       gammaSmartController: gammaSmartController,
       scrollController: scrollController,
       itemCount: itemCount,
+      itemExtent: itemExtent,
       header: header,
       onLoadMore: onLoadMore,
       onRefresh: onRefresh,
@@ -194,6 +199,7 @@ class _GammaSmartPaginationState extends State<GammaSmartPagination> {
 
     if (hasSeparator) {
       return ListView.separated(
+        key: const Key('gamma_smart_pagination_listview_lazy_separated'),
         controller: _scrollController,
         itemCount: widget.itemCount,
         itemBuilder: widget.itemBuilder!,
@@ -201,9 +207,11 @@ class _GammaSmartPaginationState extends State<GammaSmartPagination> {
       );
     } else {
       return ListView.builder(
+        key: const Key('gamma_smart_pagination_listview_lazy'),
         controller: _scrollController,
         itemCount: widget.itemCount,
         itemBuilder: widget.itemBuilder!,
+        itemExtent: widget.itemExtent,
       );
     }
   }

@@ -61,6 +61,7 @@ class _InfiniteImagesViewState extends ConsumerState<InfiniteImagesView> {
       onLoadMore: viewmodel.loadMore,
       onRefresh: viewmodel.refreshImages,
       itemCount: state.imagesList.length,
+      itemExtent: 300.0,
       itemBuilder: (BuildContext context, int index) {
         final imageUrl = state.imagesList[index];
         return ImageTile(imageUrl: imageUrl);
